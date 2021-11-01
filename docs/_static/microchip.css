@@ -1,0 +1,107 @@
+@import url(basic.css);
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 100%;
+    color: #000;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #075184;
+    text-decoration: none;
+}
+
+header {
+    background-image: url(mchp-brandingelement-rgb2.png);
+    background-repeat: no-repeat;
+    background-size: auto 80px;
+}
+
+header div.logo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0 8px 0;
+}
+
+header div.branding-element img{
+    height: 80px;
+    float: left;
+}
+
+.related-wrapper {
+    background-color: black;
+}
+
+div.related {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+    padding: 8px 0;
+    font-weight: 600;
+}
+
+div.related a {
+    color: white;
+    text-decoration: none;
+}
+
+div.document {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: row;
+    margin: 20px auto 0 auto ;
+}
+
+div.body {
+    max-width: none;
+    min-width: none;
+    padding: 0 10px;
+}
+
+div.sphinxsidebar {
+    float: none;
+    width: 230px;
+    margin-left: 0;
+    flex-shrink: 0;
+}
+
+div.sphinxsidebar ul {
+    flex-shrink: 0;
+    margin: 10px;
+    padding: 0;
+    color: black;
+}
+
+div.sphinxsidebar ul ul,
+div.sphinxsidebar ul.want-points {
+    margin-left: 20px;
+    list-style: square;
+}
+
+.sphinxsidebar a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.highlight {
+    background: #e0e0e0;
+    padding: 6px;
+    border: 1px solid #bbb;
+}
+
+.footer-wrapper {
+    background: #333;
+}
+
+.footer {
+    margin: 0 auto;
+    color: #c3c3c3;
+    margin-top: 8px;
+    padding: 8px;
+    text-align: center;
+}

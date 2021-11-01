@@ -1,0 +1,7 @@
+include pymcuprog/logging.yaml
+include images/microchip.png
+# These files are read in setup.py so they must be included in the source zip for pip to be able to install the zip
+# Note however that since the files are not a part of the package (not inside the pymcuprog sub folder)
+# they won't be included in the python wheel.
+include pypi.md
+include requirements.txt

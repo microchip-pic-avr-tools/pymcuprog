@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pymcuprog documentation &#8212; pymcuprog  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/microchip.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pymcuprog package" href="pymcuprog.html" /> 
+  </head><body>
+    <header>
+        <div class="logo">
+            <a href="https://microchip.com" target="_blank">
+                <img src="_static/microchip.png" />
+            </a>
+        </div>
+    </header>
+
+    <div class="related-wrapper">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pymcuprog.html" title="pymcuprog package"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pymcuprog  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">pymcuprog documentation</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="document">
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pymcuprog documentation</a><ul>
+<li><a class="reference internal" href="#python-mcu-programmer-utility">Python MCU programmer utility</a></li>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#library-usage">Library usage</a></li>
+<li><a class="reference internal" href="#logging">Logging</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#supported-devices-and-tools">Supported devices and tools</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pymcuprog.html"
+                        title="next chapter">pymcuprog package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+        <div class="documentwrapper">
+            <div class="bodywrapper">
+                <div class="body" role="main">
+                    
+  <section id="pymcuprog-documentation">
+<h1>pymcuprog documentation<a class="headerlink" href="#pymcuprog-documentation" title="Permalink to this headline">¶</a></h1>
+<section id="python-mcu-programmer-utility">
+<h2>Python MCU programmer utility<a class="headerlink" href="#python-mcu-programmer-utility" title="Permalink to this headline">¶</a></h2>
+<p>pymcuprog is a utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers</p>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>pymcuprog is available:</dt><dd><ul class="simple">
+<li><p>install using pip from pypi: <a class="reference external" href="https://pypi.org/project/pymcuprog">https://pypi.org/project/pymcuprog</a></p></li>
+<li><p>browse source code on github: <a class="reference external" href="https://github.com/microchip-pic-avr-tools/pymcuprog">https://github.com/microchip-pic-avr-tools/pymcuprog</a></p></li>
+<li><p>read API documentation on github: <a class="reference external" href="https://microchip-pic-avr-tools.github.io/pymcuprog">https://microchip-pic-avr-tools.github.io/pymcuprog</a></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="library-usage">
+<h2>Library usage<a class="headerlink" href="#library-usage" title="Permalink to this headline">¶</a></h2>
+<p>pymcuprog can be used as a library using its backend API.  For example:</p>
+<dl>
+<dt>Setup logging - pymcuprog uses the Python logging module</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(levelname)s</span><span class="s2">: </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Configure the session:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymcuprog.backend</span> <span class="kn">import</span> <span class="n">SessionConfig</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sessionconfig</span> <span class="o">=</span> <span class="n">SessionConfig</span><span class="p">(</span><span class="s2">&quot;atmega4808&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Instantiate USB transport (only 1 tool connected)</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymcuprog.toolconnection</span> <span class="kn">import</span> <span class="n">ToolUsbHidConnection</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transport</span> <span class="o">=</span> <span class="n">ToolUsbHidConnection</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+<dt>Instantiate backend</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymcuprog.backend</span> <span class="kn">import</span> <span class="n">Backend</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">backend</span> <span class="o">=</span> <span class="n">Backend</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+<dt>Connect to tool using transport</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">backend</span><span class="o">.</span><span class="n">connect_to_tool</span><span class="p">(</span><span class="n">transport</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Start the session</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">backend</span><span class="o">.</span><span class="n">start_session</span><span class="p">(</span><span class="n">sessionconfig</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Read the target device_id</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">device_id</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">read_device_id</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Device ID is </span><span class="si">{0:06X}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s2">&quot;little&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</dd>
+<dt>Print the pymcuprog package version:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymcuprog.version</span> <span class="kn">import</span> <span class="n">VERSION</span> <span class="k">as</span> <span class="n">pymcuprog_version</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pymcuprog version </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pymcuprog_version</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd>
+<dt>In addition, the CLI-backend API is versioned for convenience:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pymcuprog backend API version: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">get_api_version</span><span class="p">()))</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>This package uses the Python logging module for publishing log messages to library users.
+A basic configuration can be used (see example), but for best results a more thorough configuration is
+recommended in order to control the verbosity of output from dependencies in the stack which also use logging.
+See logging.yaml which is included in the package (although only used for CLI)</p>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>pymcuprog depends on pyedbglib for its transport protocol.
+pyedbglib requires a USB transport library like libusb.  See pyedbglib package for more information.</p>
+</section>
+<section id="supported-devices-and-tools">
+<h2>Supported devices and tools<a class="headerlink" href="#supported-devices-and-tools" title="Permalink to this headline">¶</a></h2>
+<p>Note: pymcuprog is primarily intended for use with PKOB nano (nEDBG) debuggers which
+are found on Curiosity Nano kits and other development boards.  This means that it is
+continuously tested with a selection of AVR devices with UPDI interface as well as a
+selection of PIC devices.  However since the protocol is compatible between all
+EDBG-based debuggers (pyedbglib) it is possible to use pymcuprog with a wide range of
+debuggers and devices, although not all device families/interfaces have been implemented.</p>
+<dl class="simple">
+<dt>The following Atmel/Microchip debuggers are supported:</dt><dd><ul class="simple">
+<li><p>PKOB nano (nEDBG)</p></li>
+<li><p>MPLAB PICkit 4 ICD (only when in ‘AVR mode’)</p></li>
+<li><p>MPLAB Snap ICD (only when in ‘AVR mode’)</p></li>
+<li><p>Atmel-ICE</p></li>
+<li><p>Power Debugger</p></li>
+<li><p>EDBG</p></li>
+<li><p>mEDBG</p></li>
+<li><p>JTAGICE3 (only firmware version 3.x)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Although not all functionality is provided on all debuggers/boards.  See device support section below.</p>
+<dl class="simple">
+<dt>The following device-types are supported:</dt><dd><ul class="simple">
+<li><p>All AVR UPDI devices, whether mounted on kits or standalone</p></li>
+<li><p>PIC devices mounted on Curiosity Nano kits, or similar board with PKOB nano (nEDBG) debugger</p></li>
+<li><p>Other devices (eg ATmega328P, ATsamd21e18a) may be partially supported for experimental purposes</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pymcuprog.html">pymcuprog package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.deviceinfo.html">pymcuprog.deviceinfo package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo.deviceinfo">pymcuprog.deviceinfo.deviceinfo module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo.deviceinfokeys">pymcuprog.deviceinfo.deviceinfokeys module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo.eraseflags">pymcuprog.deviceinfo.eraseflags module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo.memorynames">pymcuprog.deviceinfo.memorynames module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.serialupdi.html">pymcuprog.serialupdi package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.application">pymcuprog.serialupdi.application module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.constants">pymcuprog.serialupdi.constants module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.link">pymcuprog.serialupdi.link module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.nvm">pymcuprog.serialupdi.nvm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.physical">pymcuprog.serialupdi.physical module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.readwrite">pymcuprog.serialupdi.readwrite module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.timeout">pymcuprog.serialupdi.timeout module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.avr32target">pymcuprog.avr32target module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.avr8target">pymcuprog.avr8target module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.backend">pymcuprog.backend module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.hexfileutils">pymcuprog.hexfileutils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvm">pymcuprog.nvm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmavr32">pymcuprog.nvmavr32 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmdebugwire">pymcuprog.nvmdebugwire module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmmzeroplus">pymcuprog.nvmmzeroplus module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmpic">pymcuprog.nvmpic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmserialupdi">pymcuprog.nvmserialupdi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmspi">pymcuprog.nvmspi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmupdi">pymcuprog.nvmupdi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.programmer">pymcuprog.programmer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.pymcuprog">pymcuprog.pymcuprog module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.pymcuprog_errors">pymcuprog.pymcuprog_errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.pymcuprog_main">pymcuprog.pymcuprog_main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.samtarget">pymcuprog.samtarget module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.toolconnection">pymcuprog.toolconnection module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.utils">pymcuprog.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.version">pymcuprog.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#python-mcu-programmer-utility">Python MCU programmer utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#library-usage">Library usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#logging">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#supported-devices-and-tools">Supported devices and tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrapper">
+        <div class="footer" role="contentinfo">
+            © Copyright 2021, Microchip Technology Inc
+        </div>
+    </div>
+  </body>
+</html>

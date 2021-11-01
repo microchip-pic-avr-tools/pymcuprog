@@ -1,0 +1,1261 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pymcuprog.serialupdi package &#8212; pymcuprog  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/microchip.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pymcuprog.deviceinfo package" href="pymcuprog.deviceinfo.html" /> 
+  </head><body>
+    <header>
+        <div class="logo">
+            <a href="https://microchip.com" target="_blank">
+                <img src="_static/microchip.png" />
+            </a>
+        </div>
+    </header>
+
+    <div class="related-wrapper">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pymcuprog.deviceinfo.html" title="pymcuprog.deviceinfo package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pymcuprog  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="pymcuprog.html" accesskey="U">pymcuprog package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">pymcuprog.serialupdi package</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="document">
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pymcuprog.serialupdi package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pymcuprog.serialupdi.application">pymcuprog.serialupdi.application module</a></li>
+<li><a class="reference internal" href="#module-pymcuprog.serialupdi.constants">pymcuprog.serialupdi.constants module</a></li>
+<li><a class="reference internal" href="#module-pymcuprog.serialupdi.link">pymcuprog.serialupdi.link module</a></li>
+<li><a class="reference internal" href="#module-pymcuprog.serialupdi.nvm">pymcuprog.serialupdi.nvm module</a></li>
+<li><a class="reference internal" href="#module-pymcuprog.serialupdi.physical">pymcuprog.serialupdi.physical module</a></li>
+<li><a class="reference internal" href="#module-pymcuprog.serialupdi.readwrite">pymcuprog.serialupdi.readwrite module</a></li>
+<li><a class="reference internal" href="#module-pymcuprog.serialupdi.timeout">pymcuprog.serialupdi.timeout module</a></li>
+<li><a class="reference internal" href="#module-pymcuprog.serialupdi">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pymcuprog.deviceinfo.html"
+                        title="previous chapter">pymcuprog.deviceinfo package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pymcuprog.serialupdi.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+        <div class="documentwrapper">
+            <div class="bodywrapper">
+                <div class="body" role="main">
+                    
+  <section id="pymcuprog-serialupdi-package">
+<h1>pymcuprog.serialupdi package<a class="headerlink" href="#pymcuprog-serialupdi-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-pymcuprog.serialupdi.application">
+<span id="pymcuprog-serialupdi-application-module"></span><h2>pymcuprog.serialupdi.application module<a class="headerlink" href="#module-pymcuprog.serialupdi.application" title="Permalink to this headline">¶</a></h2>
+<p>Application layer for UPDI stack</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.application.</span></span><span class="sig-name descname"><span class="pre">UpdiApplication</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serialport</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baud</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generic application layer for UPDI</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.enter_progmode">
+<span class="sig-name descname"><span class="pre">enter_progmode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.enter_progmode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enters into NVM programming mode</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.in_prog_mode">
+<span class="sig-name descname"><span class="pre">in_prog_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.in_prog_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the NVM PROG flag is up</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.leave_progmode">
+<span class="sig-name descname"><span class="pre">leave_progmode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.leave_progmode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables UPDI which releases any keys enabled</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.read_data">
+<span class="sig-name descname"><span class="pre">read_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.read_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a number of bytes of data from UPDI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>size</strong> – number of bytes to read</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.read_data_words">
+<span class="sig-name descname"><span class="pre">read_data_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">words</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.read_data_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a number of words of data from UPDI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>words</strong> – number of words to read</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.read_device_info">
+<span class="sig-name descname"><span class="pre">read_device_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.read_device_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads out device information from various sources</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apply_reset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies or releases an UPDI reset condition</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>apply_reset</strong> – True to apply, False to release</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.unlock">
+<span class="sig-name descname"><span class="pre">unlock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.unlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unlock by chip erase</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.wait_unlocked">
+<span class="sig-name descname"><span class="pre">wait_unlocked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout_ms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.wait_unlocked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waits for the device to be unlocked.
+All devices boot up as locked until proven otherwise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout_ms</strong> – number of milliseconds to wait</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.wait_urow_prog">
+<span class="sig-name descname"><span class="pre">wait_urow_prog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout_ms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_high</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.wait_urow_prog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waits for the device to be in user row write mode
+User row is writeable on a locked device using this mechanism</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeout_ms</strong> – number of milliseconds to wait</p></li>
+<li><p><strong>wait_for_high</strong> – set True to wait for bit to go high; False to wait for low</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.write_data">
+<span class="sig-name descname"><span class="pre">write_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.write_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a number of bytes to memory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.write_data_words">
+<span class="sig-name descname"><span class="pre">write_data_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.write_data_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a number of words to memory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.UpdiApplication.write_user_row_locked_device">
+<span class="sig-name descname"><span class="pre">write_user_row_locked_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.UpdiApplication.write_user_row_locked_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to the user row when the device is locked, using a key.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.application.decode_sib">
+<span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.application.</span></span><span class="sig-name descname"><span class="pre">decode_sib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sib</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.application.decode_sib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns the SIB into something readable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sib</strong> – SIB data to decode</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.serialupdi.constants">
+<span id="pymcuprog-serialupdi-constants-module"></span><h2>pymcuprog.serialupdi.constants module<a class="headerlink" href="#module-pymcuprog.serialupdi.constants" title="Permalink to this headline">¶</a></h2>
+<p>UPDI protocol constants</p>
+</section>
+<section id="module-pymcuprog.serialupdi.link">
+<span id="pymcuprog-serialupdi-link-module"></span><h2>pymcuprog.serialupdi.link module<a class="headerlink" href="#module-pymcuprog.serialupdi.link" title="Permalink to this headline">¶</a></h2>
+<p>Link layer in UPDI protocol stack</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.link.</span></span><span class="sig-name descname"><span class="pre">UpdiDatalink</span></span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>UPDI data link class handles the UPDI data protocol within the device</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.LDCS_RESPONSE_BYTES">
+<span class="sig-name descname"><span class="pre">LDCS_RESPONSE_BYTES</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.LDCS_RESPONSE_BYTES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.init_datalink">
+<span class="sig-name descname"><span class="pre">init_datalink</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.init_datalink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Init DL layer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.key">
+<span class="sig-name descname"><span class="pre">key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> – size of key (0=64B, 1=128B, 2=256B)</p></li>
+<li><p><strong>key</strong> – key value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.ld_ptr_inc">
+<span class="sig-name descname"><span class="pre">ld_ptr_inc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.ld_ptr_inc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a number of bytes from the pointer location with pointer post-increment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> – number of bytes to load</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>values read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.ld_ptr_inc16">
+<span class="sig-name descname"><span class="pre">ld_ptr_inc16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.ld_ptr_inc16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a 16-bit word value from the pointer location with pointer post-increment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>words</strong> – number of words to load</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>values read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.ldcs">
+<span class="sig-name descname"><span class="pre">ldcs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.ldcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from Control/Status space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> – address to load</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.read_sib">
+<span class="sig-name descname"><span class="pre">read_sib</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.read_sib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the SIB</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.repeat">
+<span class="sig-name descname"><span class="pre">repeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repeats</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.repeat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a value to the repeat counter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repeats</strong> – number of repeats requested</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.set_physical">
+<span class="sig-name descname"><span class="pre">set_physical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">physical</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.set_physical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inject a serial-port based physical layer for use by this DL</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.st_ptr_inc">
+<span class="sig-name descname"><span class="pre">st_ptr_inc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.st_ptr_inc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store data to the pointer location with pointer post-increment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – data to store</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.st_ptr_inc16">
+<span class="sig-name descname"><span class="pre">st_ptr_inc16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.st_ptr_inc16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a 16-bit word value to the pointer location with pointer post-increment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – data to store</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink.stcs">
+<span class="sig-name descname"><span class="pre">stcs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink.stcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a value to Control/Status space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to store to</p></li>
+<li><p><strong>value</strong> – value to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink16bit">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.link.</span></span><span class="sig-name descname"><span class="pre">UpdiDatalink16bit</span></span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink16bit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.serialupdi.link.UpdiDatalink" title="pymcuprog.serialupdi.link.UpdiDatalink"><code class="xref py py-class docutils literal notranslate"><span class="pre">pymcuprog.serialupdi.link.UpdiDatalink</span></code></a></p>
+<p>UPDI data link layer in 16-bit version
+This means that all addresses and pointers contain 2 bytes</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink16bit.ld">
+<span class="sig-name descname"><span class="pre">ld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink16bit.ld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a single byte direct from a 16-bit address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> – address to load from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink16bit.ld16">
+<span class="sig-name descname"><span class="pre">ld16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink16bit.ld16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a 16-bit word directly from a 16-bit address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> – address to load from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>values read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink16bit.st">
+<span class="sig-name descname"><span class="pre">st</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink16bit.st" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a single byte value directly to a 16-bit address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>value</strong> – value to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink16bit.st16">
+<span class="sig-name descname"><span class="pre">st16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink16bit.st16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a 16-bit word value directly to a 16-bit address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>value</strong> – value to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink16bit.st_ptr">
+<span class="sig-name descname"><span class="pre">st_ptr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink16bit.st_ptr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the pointer location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> – address to write</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink24bit">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.link.</span></span><span class="sig-name descname"><span class="pre">UpdiDatalink24bit</span></span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink24bit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.serialupdi.link.UpdiDatalink" title="pymcuprog.serialupdi.link.UpdiDatalink"><code class="xref py py-class docutils literal notranslate"><span class="pre">pymcuprog.serialupdi.link.UpdiDatalink</span></code></a></p>
+<p>UPDI data link layer in 24-bit version
+This means that all addresses and pointers contain 3 bytes</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink24bit.ld">
+<span class="sig-name descname"><span class="pre">ld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink24bit.ld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a single byte direct from a 24-bit address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> – address to load from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink24bit.ld16">
+<span class="sig-name descname"><span class="pre">ld16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink24bit.ld16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a 16-bit word directly from a 24-bit address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> – address to load from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>values read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink24bit.st">
+<span class="sig-name descname"><span class="pre">st</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink24bit.st" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a single byte value directly to a 24-bit address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>value</strong> – value to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink24bit.st16">
+<span class="sig-name descname"><span class="pre">st16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink24bit.st16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a 16-bit word value directly to a 24-bit address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>value</strong> – value to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.link.UpdiDatalink24bit.st_ptr">
+<span class="sig-name descname"><span class="pre">st_ptr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.link.UpdiDatalink24bit.st_ptr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the pointer location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> – address to write</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.serialupdi.nvm">
+<span id="pymcuprog-serialupdi-nvm-module"></span><h2>pymcuprog.serialupdi.nvm module<a class="headerlink" href="#module-pymcuprog.serialupdi.nvm" title="Permalink to this headline">¶</a></h2>
+<p>NVM implementations on various UPDI device families</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.nvm.</span></span><span class="sig-name descname"><span class="pre">NvmUpdi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">readwrite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for NVM</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.chip_erase">
+<span class="sig-name descname"><span class="pre">chip_erase</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.chip_erase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does a chip erase using the NVM controller</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.erase_eeprom">
+<span class="sig-name descname"><span class="pre">erase_eeprom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.erase_eeprom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erase EEPROM memory only</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.erase_flash_page">
+<span class="sig-name descname"><span class="pre">erase_flash_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.erase_flash_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erasing single flash page using the NVM controller</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>int</em>) – Start address of page to erase</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.erase_user_row">
+<span class="sig-name descname"><span class="pre">erase_user_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.erase_user_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erase User Row memory only</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<em>int</em>) – Start address of user row</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Size of user row</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.execute_nvm_command">
+<span class="sig-name descname"><span class="pre">execute_nvm_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.execute_nvm_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes an NVM COMMAND on the NVM CTRL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>command</strong> – command to execute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.wait_nvm_ready">
+<span class="sig-name descname"><span class="pre">wait_nvm_ready</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.wait_nvm_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waits for the NVM controller to be ready</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.write_eeprom">
+<span class="sig-name descname"><span class="pre">write_eeprom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.write_eeprom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data to EEPROM</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.write_flash">
+<span class="sig-name descname"><span class="pre">write_flash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.write_flash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to flash</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.write_fuse">
+<span class="sig-name descname"><span class="pre">write_fuse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.write_fuse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes one fuse value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdi.write_user_row">
+<span class="sig-name descname"><span class="pre">write_user_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdi.write_user_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to user row</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.nvm.</span></span><span class="sig-name descname"><span class="pre">NvmUpdiAvrV2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">readwrite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.serialupdi.nvm.NvmUpdi" title="pymcuprog.serialupdi.nvm.NvmUpdi"><code class="xref py py-class docutils literal notranslate"><span class="pre">pymcuprog.serialupdi.nvm.NvmUpdi</span></code></a></p>
+<p>AKA Version 2 UPDI NVM
+Present on, for example, AVR-DA and newer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.chip_erase">
+<span class="sig-name descname"><span class="pre">chip_erase</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.chip_erase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does a chip erase using the NVM controller
+Note that on locked devices this it not possible
+and the ERASE KEY has to be used instead</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.erase_eeprom">
+<span class="sig-name descname"><span class="pre">erase_eeprom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.erase_eeprom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erase EEPROM memory only (v1)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.erase_flash_page">
+<span class="sig-name descname"><span class="pre">erase_flash_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.erase_flash_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erasing single flash page using the NVM controller (v1)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>int</em>) – Start address of page to erase</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.erase_user_row">
+<span class="sig-name descname"><span class="pre">erase_user_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.erase_user_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erase User Row memory only (v1)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>int</em>) – Start address of user row</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_eeprom">
+<span class="sig-name descname"><span class="pre">write_eeprom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_eeprom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to NVM (EEPROM)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_flash">
+<span class="sig-name descname"><span class="pre">write_flash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_flash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to flash (v1)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_fuse">
+<span class="sig-name descname"><span class="pre">write_fuse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_fuse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes one fuse value
+V1 fuses are EEPROM-based</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_nvm">
+<span class="sig-name descname"><span class="pre">write_nvm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_word_access</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_nvm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to NVM (version 1)
+This version of the NVM block has no page buffer, so words are written directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+<li><p><strong>use_word_access</strong> – write in whole words?</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_user_row">
+<span class="sig-name descname"><span class="pre">write_user_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_user_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to user row (v1)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.nvm.</span></span><span class="sig-name descname"><span class="pre">NvmUpdiAvrV3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">readwrite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.serialupdi.nvm.NvmUpdi" title="pymcuprog.serialupdi.nvm.NvmUpdi"><code class="xref py py-class docutils literal notranslate"><span class="pre">pymcuprog.serialupdi.nvm.NvmUpdi</span></code></a></p>
+<p>AKA Version 3 UPDI NVM
+Present on, for example, AVR-EA</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.chip_erase">
+<span class="sig-name descname"><span class="pre">chip_erase</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.chip_erase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does a chip erase using the NVM controller</p>
+<p>Note that on locked devices this is not possible
+and the ERASE KEY has to be used instead, see the unlock method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.erase_eeprom">
+<span class="sig-name descname"><span class="pre">erase_eeprom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.erase_eeprom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erase EEPROM memory only</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.erase_flash_page">
+<span class="sig-name descname"><span class="pre">erase_flash_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.erase_flash_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erasing single flash page using the NVM controller (v3)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>int</em>) – Start address of page to erase</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.erase_user_row">
+<span class="sig-name descname"><span class="pre">erase_user_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.erase_user_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erase User Row memory only</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>int</em>) – Start address of user row</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_eeprom">
+<span class="sig-name descname"><span class="pre">write_eeprom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_eeprom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data to EEPROM (v3)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_flash">
+<span class="sig-name descname"><span class="pre">write_flash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_flash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to flash (v3)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_fuse">
+<span class="sig-name descname"><span class="pre">write_fuse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_fuse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes one fuse value (v3)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_nvm">
+<span class="sig-name descname"><span class="pre">write_nvm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_word_access</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvmcommand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_nvm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a page of data to NVM (v3)</p>
+<p>By default the PAGE_WRITE command is used, which
+requires that the page is already erased.
+By default word access is used (flash)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+<li><p><strong>use_word_access</strong> – write whole words?</p></li>
+<li><p><strong>nvmcommand</strong> – command to use for commit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_user_row">
+<span class="sig-name descname"><span class="pre">write_user_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_user_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to user row (v3)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.nvm.</span></span><span class="sig-name descname"><span class="pre">NvmUpdiV0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">readwrite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.serialupdi.nvm.NvmUpdi" title="pymcuprog.serialupdi.nvm.NvmUpdi"><code class="xref py py-class docutils literal notranslate"><span class="pre">pymcuprog.serialupdi.nvm.NvmUpdi</span></code></a></p>
+<p>AKA Version 0 UPDI NVM
+Present on, for example, tiny817 -&gt; mega4809</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0.chip_erase">
+<span class="sig-name descname"><span class="pre">chip_erase</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0.chip_erase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does a chip erase using the NVM controller</p>
+<p>Note that on locked devices this is not possible
+and the ERASE KEY has to be used instead, see the unlock method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0.erase_eeprom">
+<span class="sig-name descname"><span class="pre">erase_eeprom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0.erase_eeprom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erase EEPROM memory only (v0)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0.erase_flash_page">
+<span class="sig-name descname"><span class="pre">erase_flash_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0.erase_flash_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erasing single flash page using the NVM controller (v0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>int</em>) – Start address of page to erase</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0.erase_user_row">
+<span class="sig-name descname"><span class="pre">erase_user_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0.erase_user_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erase User Row memory only (v0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>int</em>) – Start address of user row</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0.write_eeprom">
+<span class="sig-name descname"><span class="pre">write_eeprom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_eeprom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data to EEPROM (v0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0.write_flash">
+<span class="sig-name descname"><span class="pre">write_flash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_flash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to flash (v0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0.write_fuse">
+<span class="sig-name descname"><span class="pre">write_fuse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_fuse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes one fuse value (v0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0.write_nvm">
+<span class="sig-name descname"><span class="pre">write_nvm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_word_access</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvmcommand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_nvm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a page of data to NVM (v0)</p>
+<p>By default the PAGE_WRITE command is used, which
+requires that the page is already erased.
+By default word access is used (flash)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+<li><p><strong>use_word_access</strong> – write whole words?</p></li>
+<li><p><strong>nvmcommand</strong> – command to use for commit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.nvm.NvmUpdiV0.write_user_row">
+<span class="sig-name descname"><span class="pre">write_user_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_user_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data to user row (v0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.serialupdi.physical">
+<span id="pymcuprog-serialupdi-physical-module"></span><h2>pymcuprog.serialupdi.physical module<a class="headerlink" href="#module-pymcuprog.serialupdi.physical" title="Permalink to this headline">¶</a></h2>
+<p>Serial driver for UPDI stack</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.physical.UpdiPhysical">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.physical.</span></span><span class="sig-name descname"><span class="pre">UpdiPhysical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baud</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">115200</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.physical.UpdiPhysical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>PDI physical driver using a given serial port at a given baud</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.physical.UpdiPhysical.initialise_serial">
+<span class="sig-name descname"><span class="pre">initialise_serial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baud</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.physical.UpdiPhysical.initialise_serial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard serial port initialisation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – serial port to use</p></li>
+<li><p><strong>baud</strong> – baud rate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.physical.UpdiPhysical.receive">
+<span class="sig-name descname"><span class="pre">receive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.physical.UpdiPhysical.receive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receives a frame of a known number of chars from UPDI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> – bytes to receive</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.physical.UpdiPhysical.send">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.physical.UpdiPhysical.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a char array to UPDI without inter-byte delay
+Note that the byte will echo back</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>command</strong> – command to send</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.physical.UpdiPhysical.send_double_break">
+<span class="sig-name descname"><span class="pre">send_double_break</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.physical.UpdiPhysical.send_double_break" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a double break to reset the UPDI port</p>
+<p>BREAK is actually just a slower zero frame
+A double break is guaranteed to push the UPDI state
+machine into a known state, albeit rather brutally</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.physical.UpdiPhysical.sib">
+<span class="sig-name descname"><span class="pre">sib</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.physical.UpdiPhysical.sib" title="Permalink to this definition">¶</a></dt>
+<dd><p>System information block is just a string coming back from a SIB command</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.serialupdi.readwrite">
+<span id="pymcuprog-serialupdi-readwrite-module"></span><h2>pymcuprog.serialupdi.readwrite module<a class="headerlink" href="#module-pymcuprog.serialupdi.readwrite" title="Permalink to this headline">¶</a></h2>
+<p>Read/write access provider for UPDI</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.readwrite.</span></span><span class="sig-name descname"><span class="pre">UpdiReadWrite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datalink</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides various forms of reads and writes for UPDI applications
+Makes us of the datalink provided</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_byte">
+<span class="sig-name descname"><span class="pre">read_byte</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_byte" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a single byte from UPDI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> – address to read from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_cs">
+<span class="sig-name descname"><span class="pre">read_cs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_cs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read from Control/Status space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> – address (index) to read</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_data">
+<span class="sig-name descname"><span class="pre">read_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a number of bytes of data from UPDI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>size</strong> – number of bytes to read</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_data_words">
+<span class="sig-name descname"><span class="pre">read_data_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">words</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_data_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a number of words of data from UPDI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>words</strong> – number of words to read</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_sib">
+<span class="sig-name descname"><span class="pre">read_sib</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.read_sib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the SIB from UPDI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>SIB string (bytearray) read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_byte">
+<span class="sig-name descname"><span class="pre">write_byte</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_byte" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a single byte to UPDI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>value</strong> – value to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_cs">
+<span class="sig-name descname"><span class="pre">write_cs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_cs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write to Control/Status space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address (index) to write</p></li>
+<li><p><strong>value</strong> – 8-bit value to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_data">
+<span class="sig-name descname"><span class="pre">write_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a number of bytes to memory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_data_words">
+<span class="sig-name descname"><span class="pre">write_data_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_data_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a number of words to memory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – address to write to</p></li>
+<li><p><strong>data</strong> – data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_key">
+<span class="sig-name descname"><span class="pre">write_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.readwrite.UpdiReadWrite.write_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a KEY into UPDI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> – size of key to send</p></li>
+<li><p><strong>key</strong> – key value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.serialupdi.timeout">
+<span id="pymcuprog-serialupdi-timeout-module"></span><h2>pymcuprog.serialupdi.timeout module<a class="headerlink" href="#module-pymcuprog.serialupdi.timeout" title="Permalink to this headline">¶</a></h2>
+<p>Simple timer helper for UPDI stack</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.timeout.Timeout">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pymcuprog.serialupdi.timeout.</span></span><span class="sig-name descname"><span class="pre">Timeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout_ms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.timeout.Timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Simple timeout helper in milliseconds.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.serialupdi.timeout.Timeout.expired">
+<span class="sig-name descname"><span class="pre">expired</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.timeout.Timeout.expired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the timeout has expired</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.serialupdi">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pymcuprog.serialupdi" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrapper">
+        <div class="footer" role="contentinfo">
+            © Copyright 2021, Microchip Technology Inc
+        </div>
+    </div>
+  </body>
+</html>
