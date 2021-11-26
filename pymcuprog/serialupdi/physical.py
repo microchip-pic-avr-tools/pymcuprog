@@ -49,7 +49,7 @@ class UpdiPhysical:
             i_data = [ord(x) for x in data]
         else:
             i_data = data
-        data_str = "[" + ", ".join([hex(x) for x in i_data]) + "]"
+        data_str = "[" + ", ".join(["0x{:02X}".format(x) for x in i_data]) + "]"
         self.logger.debug("%s : %s", msg, data_str)
 
     def send_double_break(self):
