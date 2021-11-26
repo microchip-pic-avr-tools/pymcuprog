@@ -246,6 +246,8 @@ def pagealign(data, address, page_size, data_size=1):
     """
     Aligns data to the start of a page
     """
+    # Clone input array
+    data = copy.deepcopy(data)
     # Pre-pad the data if it does not start at the start of a page
     offset = address % page_size
     for _ in range(offset):
