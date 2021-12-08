@@ -26,10 +26,10 @@ Example 1: test connectivity by reading the device ID using Curiosity Nano:
 pymcuprog ping
 ```
 
-Example 2: erase memories, then write contents of a hexfile to flash using Curiosity Nano (pymcuprog does NOT automatically erase before writing):
+Example 2: erase memories, then write and verify the contents of a hexfile to flash using Curiosity Nano (pymcuprog does NOT automatically erase or verify):
 ```bash
 pymcuprog erase
-pymcuprog write -f app.hex
+pymcuprog write -f app.hex --verify
 ```
 
 ### Serial port UPDI (pyupdi)
