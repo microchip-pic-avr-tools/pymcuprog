@@ -26,8 +26,9 @@ Example 1: test connectivity by reading the device ID using Curiosity Nano:
 pymcuprog ping
 ```
 
-Example 2: write contents of a hexfile to flash using Curiosity Nano:
+Example 2: erase memories, then write contents of a hexfile to flash using Curiosity Nano (pymcuprog does NOT automatically erase before writing):
 ```bash
+pymcuprog erase
 pymcuprog write -f app.hex
 ```
 
