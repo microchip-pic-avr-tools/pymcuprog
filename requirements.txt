@@ -8,3 +8,6 @@ pyyaml
 
 # Microchip packages
 pyedbglib>=2.18
+
+# CXFreeze for building
+cx_Freeze
