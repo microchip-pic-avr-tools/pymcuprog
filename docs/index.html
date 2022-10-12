@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pymcuprog documentation &#8212; pymcuprog  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/microchip.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pymcuprog package" href="pymcuprog.html" /> 
+  </head><body>
+    <header>
+        <div class="logo">
+            <a href="https://microchip.com" target="_blank">
+                <img src="_static/microchip.png" />
+            </a>
+        </div>
+    </header>
+
+    <div class="related-wrapper">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pymcuprog.html" title="pymcuprog package"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pymcuprog  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">pymcuprog documentation</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="document">
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">pymcuprog documentation</a><ul>
+<li><a class="reference internal" href="#python-mcu-programmer-utility">Python MCU programmer utility</a></li>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#command-line-interface-usage">Command-line interface usage</a></li>
+<li><a class="reference internal" href="#library-usage">Library usage</a></li>
+<li><a class="reference internal" href="#logging">Logging</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#supported-devices-and-tools">Supported devices and tools</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="pymcuprog.html"
+                          title="next chapter">pymcuprog package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+        <div class="documentwrapper">
+            <div class="bodywrapper">
+                <div class="body" role="main">
+                    
+  <section id="pymcuprog-documentation">
+<h1>pymcuprog documentation<a class="headerlink" href="#pymcuprog-documentation" title="Permalink to this heading">¶</a></h1>
+<section id="python-mcu-programmer-utility">
+<h2>Python MCU programmer utility<a class="headerlink" href="#python-mcu-programmer-utility" title="Permalink to this heading">¶</a></h2>
+<p>pymcuprog is a utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers</p>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt>pymcuprog is available:</dt><dd><ul class="simple">
+<li><p>install using pip from pypi: <a class="reference external" href="https://pypi.org/project/pymcuprog">https://pypi.org/project/pymcuprog</a></p></li>
+<li><p>browse source code on github: <a class="reference external" href="https://github.com/microchip-pic-avr-tools/pymcuprog">https://github.com/microchip-pic-avr-tools/pymcuprog</a></p></li>
+<li><p>read API documentation on github: <a class="reference external" href="https://microchip-pic-avr-tools.github.io/pymcuprog">https://microchip-pic-avr-tools.github.io/pymcuprog</a></p></li>
+<li><p>read the changelog on github: <a class="reference external" href="https://github.com/microchip-pic-avr-tools/pymcuprog/blob/main/CHANGELOG.md">https://github.com/microchip-pic-avr-tools/pymcuprog/blob/main/CHANGELOG.md</a></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="command-line-interface-usage">
+<h2>Command-line interface usage<a class="headerlink" href="#command-line-interface-usage" title="Permalink to this heading">¶</a></h2>
+<p>For using pymcuprog as a CLI, see help.md (<a class="reference external" href="https://github.com/microchip-pic-avr-tools/pymcuprog/blob/main/help.md">https://github.com/microchip-pic-avr-tools/pymcuprog/blob/main/help.md</a>)</p>
+</section>
+<section id="library-usage">
+<h2>Library usage<a class="headerlink" href="#library-usage" title="Permalink to this heading">¶</a></h2>
+<p>pymcuprog can be used as a library using its backend API.  For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup logging - pymcuprog uses the Python logging module</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(levelname)s</span><span class="s2">: </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="c1"># Configure the session:</span>
+<span class="kn">from</span> <span class="nn">pymcuprog.backend</span> <span class="kn">import</span> <span class="n">SessionConfig</span>
+<span class="n">sessionconfig</span> <span class="o">=</span> <span class="n">SessionConfig</span><span class="p">(</span><span class="s2">&quot;atmega4808&quot;</span><span class="p">)</span>
+
+<span class="c1"># Instantiate USB transport (only 1 tool connected)</span>
+<span class="kn">from</span> <span class="nn">pymcuprog.toolconnection</span> <span class="kn">import</span> <span class="n">ToolUsbHidConnection</span>
+<span class="n">transport</span> <span class="o">=</span> <span class="n">ToolUsbHidConnection</span><span class="p">()</span>
+
+<span class="c1"># Instantiate backend</span>
+<span class="kn">from</span> <span class="nn">pymcuprog.backend</span> <span class="kn">import</span> <span class="n">Backend</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Backend</span><span class="p">()</span>
+
+<span class="c1"># Connect to tool using transport</span>
+<span class="n">backend</span><span class="o">.</span><span class="n">connect_to_tool</span><span class="p">(</span><span class="n">transport</span><span class="p">)</span>
+
+<span class="c1"># Start the session</span>
+<span class="n">backend</span><span class="o">.</span><span class="n">start_session</span><span class="p">(</span><span class="n">sessionconfig</span><span class="p">)</span>
+
+<span class="c1"># Read the target device_id</span>
+<span class="n">device_id</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">read_device_id</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Device ID is </span><span class="si">{0:06X}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s2">&quot;little&quot;</span><span class="p">)))</span>
+
+<span class="c1"># Print the pymcuprog package version:</span>
+<span class="kn">from</span> <span class="nn">pymcuprog.version</span> <span class="kn">import</span> <span class="n">VERSION</span> <span class="k">as</span> <span class="n">pymcuprog_version</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pymcuprog version </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pymcuprog_version</span><span class="p">))</span>
+
+<span class="c1"># In addition, the CLI-backend API is versioned for convenience:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pymcuprog backend API version: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">get_api_version</span><span class="p">()))</span>
+</pre></div>
+</div>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this heading">¶</a></h2>
+<p>This package uses the Python logging module for publishing log messages to library users.
+A basic configuration can be used (see example), but for best results a more thorough configuration is
+recommended in order to control the verbosity of output from dependencies in the stack which also use logging.
+See logging.yaml which is included in the package (although only used for CLI)</p>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">¶</a></h2>
+<p>pymcuprog depends on pyedbglib for its transport protocol.
+pyedbglib requires a USB transport library like libusb.  See pyedbglib package for more information.</p>
+</section>
+<section id="supported-devices-and-tools">
+<h2>Supported devices and tools<a class="headerlink" href="#supported-devices-and-tools" title="Permalink to this heading">¶</a></h2>
+<p>Note: pymcuprog is primarily intended for use with PKOB nano (nEDBG) debuggers which
+are found on Curiosity Nano kits and other development boards.  This means that it is
+continuously tested with a selection of AVR devices with UPDI interface as well as a
+selection of PIC devices.  However since the protocol is compatible between all
+EDBG-based debuggers (pyedbglib) it is possible to use pymcuprog with a wide range of
+debuggers and devices, although not all device families/interfaces have been implemented.</p>
+<dl class="simple">
+<dt>The following Atmel/Microchip debuggers are supported:</dt><dd><ul class="simple">
+<li><p>PKOB nano (nEDBG)</p></li>
+<li><p>MPLAB PICkit 4 ICD (only when in ‘AVR mode’)</p></li>
+<li><p>MPLAB Snap ICD (only when in ‘AVR mode’)</p></li>
+<li><p>Atmel-ICE</p></li>
+<li><p>Power Debugger</p></li>
+<li><p>EDBG</p></li>
+<li><p>mEDBG</p></li>
+<li><p>JTAGICE3 (only firmware version 3.x)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Although not all functionality is provided on all debuggers/boards.  See device support section below.</p>
+<dl class="simple">
+<dt>The following device-types are supported:</dt><dd><ul class="simple">
+<li><p>All AVR UPDI devices, whether mounted on kits or standalone</p></li>
+<li><p>PIC devices mounted on Curiosity Nano kits, or similar board with PKOB nano (nEDBG) debugger</p></li>
+<li><p>Other devices (eg ATmega328P, ATsamd21e18a) may be partially supported for experimental purposes</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pymcuprog.html">pymcuprog package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.deviceinfo.html">pymcuprog.deviceinfo package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo.deviceinfo">pymcuprog.deviceinfo.deviceinfo module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo.deviceinfokeys">pymcuprog.deviceinfo.deviceinfokeys module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo.eraseflags">pymcuprog.deviceinfo.eraseflags module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo.memorynames">pymcuprog.deviceinfo.memorynames module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#module-pymcuprog.deviceinfo">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.serialupdi.html">pymcuprog.serialupdi package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.application">pymcuprog.serialupdi.application module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.constants">pymcuprog.serialupdi.constants module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.link">pymcuprog.serialupdi.link module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.nvm">pymcuprog.serialupdi.nvm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.physical">pymcuprog.serialupdi.physical module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.readwrite">pymcuprog.serialupdi.readwrite module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.timeout">pymcuprog.serialupdi.timeout module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.avr8target">AVR8 target</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice"><code class="docutils literal notranslate"><span class="pre">AvrDevice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.activate_physical"><code class="docutils literal notranslate"><span class="pre">AvrDevice.activate_physical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.deactivate_physical"><code class="docutils literal notranslate"><span class="pre">AvrDevice.deactivate_physical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.enter_progmode"><code class="docutils literal notranslate"><span class="pre">AvrDevice.enter_progmode()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.erase"><code class="docutils literal notranslate"><span class="pre">AvrDevice.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.is_blank"><code class="docutils literal notranslate"><span class="pre">AvrDevice.is_blank()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.leave_progmode"><code class="docutils literal notranslate"><span class="pre">AvrDevice.leave_progmode()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.memory_read"><code class="docutils literal notranslate"><span class="pre">AvrDevice.memory_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.memory_write"><code class="docutils literal notranslate"><span class="pre">AvrDevice.memory_write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.memtype_read_from_string"><code class="docutils literal notranslate"><span class="pre">AvrDevice.memtype_read_from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.read_memory_section"><code class="docutils literal notranslate"><span class="pre">AvrDevice.read_memory_section()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.AvrDevice.write_memory_section"><code class="docutils literal notranslate"><span class="pre">AvrDevice.write_memory_section()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.MegaAvrJtagTarget"><code class="docutils literal notranslate"><span class="pre">MegaAvrJtagTarget</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.MegaAvrJtagTarget.setup_config"><code class="docutils literal notranslate"><span class="pre">MegaAvrJtagTarget.setup_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.MegaAvrJtagTarget.setup_prog_session"><code class="docutils literal notranslate"><span class="pre">MegaAvrJtagTarget.setup_prog_session()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyAvrTarget"><code class="docutils literal notranslate"><span class="pre">TinyAvrTarget</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyAvrTarget.setup_debug_session"><code class="docutils literal notranslate"><span class="pre">TinyAvrTarget.setup_debug_session()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.activate_physical"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.activate_physical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.breakpoint_clear"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.breakpoint_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.breakpoint_set"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.breakpoint_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.execute_instruction"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.execute_instruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.execute_patch"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.execute_patch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.memtype_write_from_string"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.memtype_write_from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.ocdregfile_read"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.ocdregfile_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.read_device_id"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.run_with_power_nap"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.run_with_power_nap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.setup_config"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.setup_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.setup_debug_session"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.setup_debug_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.setup_prog_session"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.setup_prog_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.sib_read"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.sib_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.TinyXAvrTarget.stack_pointer_read"><code class="docutils literal notranslate"><span class="pre">TinyXAvrTarget.stack_pointer_read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.XmegaAvrTarget"><code class="docutils literal notranslate"><span class="pre">XmegaAvrTarget</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.XmegaAvrTarget.setup_config"><code class="docutils literal notranslate"><span class="pre">XmegaAvrTarget.setup_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.XmegaAvrTarget.setup_debug_session"><code class="docutils literal notranslate"><span class="pre">XmegaAvrTarget.setup_debug_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr8target.XmegaAvrTarget.setup_prog_session"><code class="docutils literal notranslate"><span class="pre">XmegaAvrTarget.setup_prog_session()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.avr32target">AVR32 target (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr32target.Avr32Device"><code class="docutils literal notranslate"><span class="pre">Avr32Device</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr32target.Avr32Device.activate_physical"><code class="docutils literal notranslate"><span class="pre">Avr32Device.activate_physical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr32target.Avr32Device.deactivate_physical"><code class="docutils literal notranslate"><span class="pre">Avr32Device.deactivate_physical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avr32target.Avr32Device.setup_prog_session"><code class="docutils literal notranslate"><span class="pre">Avr32Device.setup_prog_session()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.samtarget">SAM target (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.CMD_EAR"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.CMD_EAR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.CMD_LR"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.CMD_LR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.CMD_PBC"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.CMD_PBC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.CMD_UR"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.CMD_UR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.CMD_WAP"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.CMD_WAP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.CMD_WP"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.CMD_WP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DAP_TRANSFER_IDLE_CYCLES"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DAP_TRANSFER_IDLE_CYCLES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DAP_TRANSFER_MATCH_RETRY"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DAP_TRANSFER_MATCH_RETRY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DAP_TRANSFER_RETRY_COUNT"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DAP_TRANSFER_RETRY_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DSU_ADDRESS"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DSU_ADDRESS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DSU_CHIP_ERASE_TIMEOUT_MS"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DSU_CHIP_ERASE_TIMEOUT_MS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DSU_CTRL_OFFSET"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DSU_CTRL_OFFSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DSU_CTRL_STATUS_CE_COMMAND_MASK"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DSU_CTRL_STATUS_CE_COMMAND_MASK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DSU_CTRL_STATUS_DONE_MASK"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DSU_CTRL_STATUS_DONE_MASK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DSU_CTRL_STATUS_PROT_MASK"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DSU_CTRL_STATUS_PROT_MASK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DSU_DID_OFFSET"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DSU_DID_OFFSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.DSU_EXTERNAL_OFFSET"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.DSU_EXTERNAL_OFFSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.FLASH_LOCK_REGIONS"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.FLASH_LOCK_REGIONS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.FLASH_LOCK_REGION_SIZE"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.FLASH_LOCK_REGION_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_CTRLB_MANW_BIT"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_CTRLB_MANW_BIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_CTRL_ADDRESS"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_CTRL_ADDRESS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_CTRL_ADDR_OFFSET"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_CTRL_ADDR_OFFSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_CTRL_CTRLB_OFFSET"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_CTRL_CTRLB_OFFSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_CTRL_CTRL_OFFSET"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_CTRL_CTRL_OFFSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_CTRL_INTFLAG_OFFSET"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_CTRL_INTFLAG_OFFSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_CTRL_LOCK_OFFSET"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_CTRL_LOCK_OFFSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_CTRL_STATUS_OFFSET"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_CTRL_STATUS_OFFSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_INT_ERROR_BIT"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_INT_ERROR_BIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_INT_READY_BIT"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_INT_READY_BIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_STATUS_LOCKE"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_STATUS_LOCKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_STATUS_NVME"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_STATUS_NVME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_STATUS_PROGE"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_STATUS_PROGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.NVM_STATUS_SB"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.NVM_STATUS_SB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.chip_erase_dsu"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.chip_erase_dsu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.connect"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.disconnect"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.disconnect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.erase_user_row"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.erase_user_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.is_device_locked"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.is_device_locked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.is_flash_ready"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.is_flash_ready()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.nvm_command"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.nvm_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.post_flash_write"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.post_flash_write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.pre_flash_write"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.pre_flash_write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.read_device_id"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.read_flash"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.read_flash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.read_user_row"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.read_user_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.reinitialise"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.reinitialise()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.set_nvmctrl_address"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.set_nvmctrl_address()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.unlock_all_regions"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.unlock_all_regions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.wait_flash_ready"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.wait_flash_ready()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.write_flash_page"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.write_flash_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamD2xTarget.write_user_row_word"><code class="docutils literal notranslate"><span class="pre">SamD2xTarget.write_user_row_word()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamM4Target"><code class="docutils literal notranslate"><span class="pre">SamM4Target</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamTarget"><code class="docutils literal notranslate"><span class="pre">SamTarget</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamTarget.ap_read"><code class="docutils literal notranslate"><span class="pre">SamTarget.ap_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamTarget.ap_write"><code class="docutils literal notranslate"><span class="pre">SamTarget.ap_write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamTarget.dp_read"><code class="docutils literal notranslate"><span class="pre">SamTarget.dp_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamTarget.dp_write"><code class="docutils literal notranslate"><span class="pre">SamTarget.dp_write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.samtarget.SamTarget.read_idcode"><code class="docutils literal notranslate"><span class="pre">SamTarget.read_idcode()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.backend">Backend API (library functions)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend"><code class="docutils literal notranslate"><span class="pre">Backend</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.API_VERSION"><code class="docutils literal notranslate"><span class="pre">Backend.API_VERSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.connect_to_tool"><code class="docutils literal notranslate"><span class="pre">Backend.connect_to_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.disconnect_from_tool"><code class="docutils literal notranslate"><span class="pre">Backend.disconnect_from_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.end_session"><code class="docutils literal notranslate"><span class="pre">Backend.end_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.erase"><code class="docutils literal notranslate"><span class="pre">Backend.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.get_api_version"><code class="docutils literal notranslate"><span class="pre">Backend.get_api_version()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.get_available_hid_tools"><code class="docutils literal notranslate"><span class="pre">Backend.get_available_hid_tools()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.get_chiperase_effect"><code class="docutils literal notranslate"><span class="pre">Backend.get_chiperase_effect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.get_device_info"><code class="docutils literal notranslate"><span class="pre">Backend.get_device_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.get_supported_devices"><code class="docutils literal notranslate"><span class="pre">Backend.get_supported_devices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.hold_in_reset"><code class="docutils literal notranslate"><span class="pre">Backend.hold_in_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.is_isolated_erase_possible"><code class="docutils literal notranslate"><span class="pre">Backend.is_isolated_erase_possible()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.read_device_id"><code class="docutils literal notranslate"><span class="pre">Backend.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.read_kit_device"><code class="docutils literal notranslate"><span class="pre">Backend.read_kit_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.read_memory"><code class="docutils literal notranslate"><span class="pre">Backend.read_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.read_supply_voltage_setpoint"><code class="docutils literal notranslate"><span class="pre">Backend.read_supply_voltage_setpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.read_target_voltage"><code class="docutils literal notranslate"><span class="pre">Backend.read_target_voltage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.read_tool_info"><code class="docutils literal notranslate"><span class="pre">Backend.read_tool_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.read_usb_voltage"><code class="docutils literal notranslate"><span class="pre">Backend.read_usb_voltage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.reboot_tool"><code class="docutils literal notranslate"><span class="pre">Backend.reboot_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.release_from_reset"><code class="docutils literal notranslate"><span class="pre">Backend.release_from_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.set_supply_voltage_setpoint"><code class="docutils literal notranslate"><span class="pre">Backend.set_supply_voltage_setpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.start_session"><code class="docutils literal notranslate"><span class="pre">Backend.start_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.verify_hex"><code class="docutils literal notranslate"><span class="pre">Backend.verify_hex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.verify_memory"><code class="docutils literal notranslate"><span class="pre">Backend.verify_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.write_hex_to_target"><code class="docutils literal notranslate"><span class="pre">Backend.write_hex_to_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.Backend.write_memory"><code class="docutils literal notranslate"><span class="pre">Backend.write_memory()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.SessionConfig"><code class="docutils literal notranslate"><span class="pre">SessionConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.SessionConfig.device"><code class="docutils literal notranslate"><span class="pre">SessionConfig.device</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.SessionConfig.interface"><code class="docutils literal notranslate"><span class="pre">SessionConfig.interface</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.SessionConfig.interface_speed"><code class="docutils literal notranslate"><span class="pre">SessionConfig.interface_speed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.SessionConfig.packpath"><code class="docutils literal notranslate"><span class="pre">SessionConfig.packpath</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.backend.SessionConfig.special_options"><code class="docutils literal notranslate"><span class="pre">SessionConfig.special_options</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.programmer">Programmer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer"><code class="docutils literal notranslate"><span class="pre">Programmer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.erase"><code class="docutils literal notranslate"><span class="pre">Programmer.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.get_device_memory_info"><code class="docutils literal notranslate"><span class="pre">Programmer.get_device_memory_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.get_device_model"><code class="docutils literal notranslate"><span class="pre">Programmer.get_device_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.hold_in_reset"><code class="docutils literal notranslate"><span class="pre">Programmer.hold_in_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.load_device"><code class="docutils literal notranslate"><span class="pre">Programmer.load_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.read_device_id"><code class="docutils literal notranslate"><span class="pre">Programmer.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.read_memory"><code class="docutils literal notranslate"><span class="pre">Programmer.read_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.release_from_reset"><code class="docutils literal notranslate"><span class="pre">Programmer.release_from_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.set_options"><code class="docutils literal notranslate"><span class="pre">Programmer.set_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.setup_device"><code class="docutils literal notranslate"><span class="pre">Programmer.setup_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.start"><code class="docutils literal notranslate"><span class="pre">Programmer.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.stop"><code class="docutils literal notranslate"><span class="pre">Programmer.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.verify_memory"><code class="docutils literal notranslate"><span class="pre">Programmer.verify_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.programmer.Programmer.write_memory"><code class="docutils literal notranslate"><span class="pre">Programmer.write_memory()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.avrdebugger">AVR debugger API (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger"><code class="docutils literal notranslate"><span class="pre">AvrDebugger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.attach"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.attach()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.detach"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.detach()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.eeprom_read"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.eeprom_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.eeprom_write"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.eeprom_write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.flash_read"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.flash_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.flush_events"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.flush_events()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.hardware_breakpoint_clear"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.hardware_breakpoint_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.hardware_breakpoint_set"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.hardware_breakpoint_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.poll_event"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.poll_event()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.program_counter_read"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.program_counter_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.program_counter_write"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.program_counter_write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.register_file_read"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.register_file_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.register_file_write"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.register_file_write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.reset"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.run"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.run_to"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.run_to()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.setup_session"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.setup_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.software_breakpoint_clear"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.software_breakpoint_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.software_breakpoint_clear_all"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.software_breakpoint_clear_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.software_breakpoint_set"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.software_breakpoint_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.sram_read"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.sram_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.sram_write"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.sram_write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.stack_pointer_read"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.stack_pointer_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.start_debugging"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.start_debugging()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.status_register_read"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.status_register_read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.step"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.stop"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.avrdebugger.AvrDebugger.stop_debugging"><code class="docutils literal notranslate"><span class="pre">AvrDebugger.stop_debugging()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvm">NVM Access (implementations)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvm.NvmAccessProvider"><code class="docutils literal notranslate"><span class="pre">NvmAccessProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvm.NvmAccessProvider.hold_in_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProvider.hold_in_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvm.NvmAccessProvider.release_from_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProvider.release_from_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvm.NvmAccessProvider.start"><code class="docutils literal notranslate"><span class="pre">NvmAccessProvider.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvm.NvmAccessProvider.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProvider.stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvm.NvmAccessProviderCmsisDapAvr"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapAvr</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvm.NvmAccessProviderCmsisDapTool"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapTool</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvm.get_nvm_access_provider"><code class="docutils literal notranslate"><span class="pre">get_nvm_access_provider()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmupdi">NVM implementation: UPDI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmupdi.NvmAccessProviderCmsisDapUpdi"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapUpdi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmupdi.NvmAccessProviderCmsisDapUpdi.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapUpdi.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmupdi.NvmAccessProviderCmsisDapUpdi.hold_in_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapUpdi.hold_in_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmupdi.NvmAccessProviderCmsisDapUpdi.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapUpdi.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmupdi.NvmAccessProviderCmsisDapUpdi.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapUpdi.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmupdi.NvmAccessProviderCmsisDapUpdi.release_from_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapUpdi.release_from_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmupdi.NvmAccessProviderCmsisDapUpdi.start"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapUpdi.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmupdi.NvmAccessProviderCmsisDapUpdi.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapUpdi.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmupdi.NvmAccessProviderCmsisDapUpdi.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapUpdi.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmserialupdi">NVM implementation: serialUPDI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.Dut"><code class="docutils literal notranslate"><span class="pre">Dut</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.NvmAccessProviderSerial"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderSerial</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.NvmAccessProviderSerial.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderSerial.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.NvmAccessProviderSerial.hold_in_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderSerial.hold_in_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.NvmAccessProviderSerial.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderSerial.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.NvmAccessProviderSerial.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderSerial.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.NvmAccessProviderSerial.release_from_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderSerial.release_from_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.NvmAccessProviderSerial.start"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderSerial.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.NvmAccessProviderSerial.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderSerial.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmserialupdi.NvmAccessProviderSerial.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderSerial.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmpic">NVM implementation: PIC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmpic.NvmAccessProviderCmsisDapPic"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapPic</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmpic.NvmAccessProviderCmsisDapPic.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapPic.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmpic.NvmAccessProviderCmsisDapPic.hold_in_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapPic.hold_in_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmpic.NvmAccessProviderCmsisDapPic.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapPic.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmpic.NvmAccessProviderCmsisDapPic.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapPic.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmpic.NvmAccessProviderCmsisDapPic.release_from_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapPic.release_from_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmpic.NvmAccessProviderCmsisDapPic.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapPic.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmpic.NvmAccessProviderCmsisDapPic.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapPic.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmmzeroplus">NVM implementation: SAM M0+ (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmzeroplus.NvmAccessProviderCmsisDapMZeroPlus"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMZeroPlus</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmzeroplus.NvmAccessProviderCmsisDapMZeroPlus.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMZeroPlus.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmzeroplus.NvmAccessProviderCmsisDapMZeroPlus.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMZeroPlus.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmzeroplus.NvmAccessProviderCmsisDapMZeroPlus.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMZeroPlus.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmzeroplus.NvmAccessProviderCmsisDapMZeroPlus.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMZeroPlus.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmzeroplus.NvmAccessProviderCmsisDapMZeroPlus.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMZeroPlus.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmdebugwire">NVM implementation: debugWIRE (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmdebugwire.NvmAccessProviderCmsisDapDebugwire"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapDebugwire</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmdebugwire.NvmAccessProviderCmsisDapDebugwire.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapDebugwire.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmdebugwire.NvmAccessProviderCmsisDapDebugwire.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapDebugwire.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmdebugwire.NvmAccessProviderCmsisDapDebugwire.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapDebugwire.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmdebugwire.NvmAccessProviderCmsisDapDebugwire.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapDebugwire.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmspi">NVM implementation: SPI (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmspi.NvmAccessProviderCmsisDapSpi"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapSpi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmspi.NvmAccessProviderCmsisDapSpi.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapSpi.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmspi.NvmAccessProviderCmsisDapSpi.hold_in_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapSpi.hold_in_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmspi.NvmAccessProviderCmsisDapSpi.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapSpi.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmspi.NvmAccessProviderCmsisDapSpi.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapSpi.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmspi.NvmAccessProviderCmsisDapSpi.release_from_reset"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapSpi.release_from_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmspi.NvmAccessProviderCmsisDapSpi.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapSpi.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmspi.NvmAccessProviderCmsisDapSpi.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapSpi.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmtpi">NVM implementation: TPI (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmtpi.NvmAccessProviderCmsisDapTpi"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapTpi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmtpi.NvmAccessProviderCmsisDapTpi.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapTpi.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmtpi.NvmAccessProviderCmsisDapTpi.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapTpi.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmtpi.NvmAccessProviderCmsisDapTpi.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapTpi.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmtpi.NvmAccessProviderCmsisDapTpi.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapTpi.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmtpi.NvmAccessProviderCmsisDapTpi.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapTpi.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmmegaavrjtag">NVM implementation: megaAVR (JTAG) - (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmegaavrjtag.NvmAccessProviderCmsisDapMegaAvrJtag"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMegaAvrJtag</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmegaavrjtag.NvmAccessProviderCmsisDapMegaAvrJtag.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMegaAvrJtag.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmegaavrjtag.NvmAccessProviderCmsisDapMegaAvrJtag.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMegaAvrJtag.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmegaavrjtag.NvmAccessProviderCmsisDapMegaAvrJtag.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMegaAvrJtag.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmegaavrjtag.NvmAccessProviderCmsisDapMegaAvrJtag.start"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMegaAvrJtag.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmegaavrjtag.NvmAccessProviderCmsisDapMegaAvrJtag.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMegaAvrJtag.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmmegaavrjtag.NvmAccessProviderCmsisDapMegaAvrJtag.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapMegaAvrJtag.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmxmega">NVM implementation: XMEGA (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmxmega.NvmAccessProviderCmsisDapXmega"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapXmega</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmxmega.NvmAccessProviderCmsisDapXmega.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapXmega.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmxmega.NvmAccessProviderCmsisDapXmega.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapXmega.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmxmega.NvmAccessProviderCmsisDapXmega.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapXmega.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmxmega.NvmAccessProviderCmsisDapXmega.start"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapXmega.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmxmega.NvmAccessProviderCmsisDapXmega.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapXmega.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmxmega.NvmAccessProviderCmsisDapXmega.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapXmega.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.nvmavr32">NVM implementation: AVR32 (alpha)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmavr32.NvmAccessProviderCmsisDapAvr32"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapAvr32</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmavr32.NvmAccessProviderCmsisDapAvr32.erase"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapAvr32.erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmavr32.NvmAccessProviderCmsisDapAvr32.read"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapAvr32.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmavr32.NvmAccessProviderCmsisDapAvr32.read_device_id"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapAvr32.read_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmavr32.NvmAccessProviderCmsisDapAvr32.stop"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapAvr32.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.nvmavr32.NvmAccessProviderCmsisDapAvr32.write"><code class="docutils literal notranslate"><span class="pre">NvmAccessProviderCmsisDapAvr32.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.utils">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.compare"><code class="docutils literal notranslate"><span class="pre">compare()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.enum"><code class="docutils literal notranslate"><span class="pre">enum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.pad_to_size"><code class="docutils literal notranslate"><span class="pre">pad_to_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.pagealign"><code class="docutils literal notranslate"><span class="pre">pagealign()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.print_tool_info"><code class="docutils literal notranslate"><span class="pre">print_tool_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.read_supply_voltage_setpoint"><code class="docutils literal notranslate"><span class="pre">read_supply_voltage_setpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.read_target_voltage"><code class="docutils literal notranslate"><span class="pre">read_target_voltage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.read_tool_info"><code class="docutils literal notranslate"><span class="pre">read_tool_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.read_usb_voltage"><code class="docutils literal notranslate"><span class="pre">read_usb_voltage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.read_voltage_parameter"><code class="docutils literal notranslate"><span class="pre">read_voltage_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.set_supply_voltage_setpoint"><code class="docutils literal notranslate"><span class="pre">set_supply_voltage_setpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.showdata"><code class="docutils literal notranslate"><span class="pre">showdata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.utils.verify_from_bin"><code class="docutils literal notranslate"><span class="pre">verify_from_bin()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.hexfileutils">Hex file utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.hexfileutils.read_memories_from_hex"><code class="docutils literal notranslate"><span class="pre">read_memories_from_hex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.hexfileutils.remove_phantom_bytes"><code class="docutils literal notranslate"><span class="pre">remove_phantom_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.hexfileutils.write_memories_to_hex"><code class="docutils literal notranslate"><span class="pre">write_memories_to_hex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.hexfileutils.write_memory_to_hex"><code class="docutils literal notranslate"><span class="pre">write_memory_to_hex()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.toolconnection">Tool connections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.toolconnection.ToolConnection"><code class="docutils literal notranslate"><span class="pre">ToolConnection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.toolconnection.ToolSerialConnection"><code class="docutils literal notranslate"><span class="pre">ToolSerialConnection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.toolconnection.ToolSerialConnection.serialport"><code class="docutils literal notranslate"><span class="pre">ToolSerialConnection.serialport</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.toolconnection.ToolUsbHidConnection"><code class="docutils literal notranslate"><span class="pre">ToolUsbHidConnection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.toolconnection.ToolUsbHidConnection.serialnumber"><code class="docutils literal notranslate"><span class="pre">ToolUsbHidConnection.serialnumber</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.html#pymcuprog.toolconnection.ToolUsbHidConnection.tool_name"><code class="docutils literal notranslate"><span class="pre">ToolUsbHidConnection.tool_name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog.pymcuprog_errors">pymcuprog errors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogDeviceLockedError"><code class="docutils literal notranslate"><span class="pre">PymcuprogDeviceLockedError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogEraseError"><code class="docutils literal notranslate"><span class="pre">PymcuprogEraseError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogError"><code class="docutils literal notranslate"><span class="pre">PymcuprogError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogNotSupportedError"><code class="docutils literal notranslate"><span class="pre">PymcuprogNotSupportedError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogSessionConfigError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSessionConfigError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogSessionError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSessionError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogToolConfigurationError"><code class="docutils literal notranslate"><span class="pre">PymcuprogToolConfigurationError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogToolConnectionError"><code class="docutils literal notranslate"><span class="pre">PymcuprogToolConnectionError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#python-mcu-programmer-utility">Python MCU programmer utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#command-line-interface-usage">Command-line interface usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#library-usage">Library usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#logging">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#supported-devices-and-tools">Supported devices and tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrapper">
+        <div class="footer" role="contentinfo">
+            © Copyright 2021, Microchip Technology Inc
+        </div>
+    </div>
+  </body>
+</html>

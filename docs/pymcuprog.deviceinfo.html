@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pymcuprog.deviceinfo package &#8212; pymcuprog  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/microchip.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pymcuprog.serialupdi package" href="pymcuprog.serialupdi.html" />
+    <link rel="prev" title="pymcuprog package" href="pymcuprog.html" /> 
+  </head><body>
+    <header>
+        <div class="logo">
+            <a href="https://microchip.com" target="_blank">
+                <img src="_static/microchip.png" />
+            </a>
+        </div>
+    </header>
+
+    <div class="related-wrapper">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pymcuprog.serialupdi.html" title="pymcuprog.serialupdi package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pymcuprog.html" title="pymcuprog package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pymcuprog  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="pymcuprog.html" accesskey="U">pymcuprog package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">pymcuprog.deviceinfo package</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="document">
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">pymcuprog.deviceinfo package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pymcuprog.deviceinfo.deviceinfo">pymcuprog.deviceinfo.deviceinfo module</a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfo</span></code></a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.bytes_or_words"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfo.bytes_or_words()</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.memory_info_by_address"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfo.memory_info_by_address()</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.memory_info_by_address_range"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfo.memory_info_by_address_range()</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.memory_info_by_name"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfo.memory_info_by_name()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfo.get_supported_devices"><code class="docutils literal notranslate"><span class="pre">get_supported_devices()</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfo.getdeviceinfo"><code class="docutils literal notranslate"><span class="pre">getdeviceinfo()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pymcuprog.deviceinfo.deviceinfokeys">pymcuprog.deviceinfo.deviceinfokeys module</a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeys</span></code></a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.ARCHITECTURE"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeys.ARCHITECTURE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.DEVICE_ID"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeys.DEVICE_ID</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.INTERFACE"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeys.INTERFACE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.NAME"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeys.NAME</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.get_all"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeys.get_all()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr</span></code></a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.ADDRESS_SIZE"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr.ADDRESS_SIZE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.DATA_ADDRESS_SPACE"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr.DATA_ADDRESS_SPACE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.HV_IMPLEMENTATION"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr.HV_IMPLEMENTATION</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.NVMCTRL_BASE"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr.NVMCTRL_BASE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.OCD_BASE"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr.OCD_BASE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.PROG_CLOCK_KHZ"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr.PROG_CLOCK_KHZ</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.SYSCFG_BASE"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr.SYSCFG_BASE</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr32"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr32</span></code></a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr32.RESET_DOMAINS"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysAvr32.RESET_DOMAINS</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysPic"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysPic</span></code></a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysPic.DEFAULT_BULK_ERASE_ADDRESS"><code class="docutils literal notranslate"><span class="pre">DeviceInfoKeysPic.DEFAULT_BULK_ERASE_ADDRESS</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys</span></code></a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.ADDRESS"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.ADDRESS</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.CHIPERASE_EFFECT"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.CHIPERASE_EFFECT</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.ERASE_ADDRESS"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.ERASE_ADDRESS</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.HEXFILE_ADDRESS"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.HEXFILE_ADDRESS</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.HEXFILE_SIZE"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.HEXFILE_SIZE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.ISOLATED_ERASE"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.ISOLATED_ERASE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.NAME"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.NAME</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.PAGE_SIZE"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.PAGE_SIZE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.READ_SIZE"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.READ_SIZE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.SIZE"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.SIZE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.VERIFY_MASK"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.VERIFY_MASK</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.WRITE_SIZE"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.WRITE_SIZE</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.get_all"><code class="docutils literal notranslate"><span class="pre">DeviceMemoryInfoKeys.get_all()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pymcuprog.deviceinfo.eraseflags">pymcuprog.deviceinfo.eraseflags module</a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.eraseflags.get_list_of_chiperase_effects"><code class="docutils literal notranslate"><span class="pre">get_list_of_chiperase_effects()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pymcuprog.deviceinfo.memorynames">pymcuprog.deviceinfo.memorynames module</a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNameAliases"><code class="docutils literal notranslate"><span class="pre">MemoryNameAliases</span></code></a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNameAliases.ALL"><code class="docutils literal notranslate"><span class="pre">MemoryNameAliases.ALL</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames"><code class="docutils literal notranslate"><span class="pre">MemoryNames</span></code></a><ul>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.CALIBRATION_ROW"><code class="docutils literal notranslate"><span class="pre">MemoryNames.CALIBRATION_ROW</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.CONFIG_WORD"><code class="docutils literal notranslate"><span class="pre">MemoryNames.CONFIG_WORD</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.EEPROM"><code class="docutils literal notranslate"><span class="pre">MemoryNames.EEPROM</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.FLASH"><code class="docutils literal notranslate"><span class="pre">MemoryNames.FLASH</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.FUSES"><code class="docutils literal notranslate"><span class="pre">MemoryNames.FUSES</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.ICD"><code class="docutils literal notranslate"><span class="pre">MemoryNames.ICD</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.INTERNAL_SRAM"><code class="docutils literal notranslate"><span class="pre">MemoryNames.INTERNAL_SRAM</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.LOCKBITS"><code class="docutils literal notranslate"><span class="pre">MemoryNames.LOCKBITS</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.SIGNATURES"><code class="docutils literal notranslate"><span class="pre">MemoryNames.SIGNATURES</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.USER_ID"><code class="docutils literal notranslate"><span class="pre">MemoryNames.USER_ID</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.USER_ROW"><code class="docutils literal notranslate"><span class="pre">MemoryNames.USER_ROW</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.get_all"><code class="docutils literal notranslate"><span class="pre">MemoryNames.get_all()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pymcuprog.deviceinfo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="pymcuprog.html"
+                          title="previous chapter">pymcuprog package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="pymcuprog.serialupdi.html"
+                          title="next chapter">pymcuprog.serialupdi package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pymcuprog.deviceinfo.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+        <div class="documentwrapper">
+            <div class="bodywrapper">
+                <div class="body" role="main">
+                    
+  <section id="pymcuprog-deviceinfo-package">
+<h1>pymcuprog.deviceinfo package<a class="headerlink" href="#pymcuprog-deviceinfo-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-pymcuprog.deviceinfo.deviceinfo">
+<span id="pymcuprog-deviceinfo-deviceinfo-module"></span><h2>pymcuprog.deviceinfo.deviceinfo module<a class="headerlink" href="#module-pymcuprog.deviceinfo.deviceinfo" title="Permalink to this heading">¶</a></h2>
+<p>deviceinfo.py
+A simple Device Information service</p>
+<p>Device information is stored in files named &lt;devicename&gt;.py in the devices sub-folder
+Each device file contains a dict of values
+These device files are [ideally] generated from DFP information by [running generate_device_info.py | hand]</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.deviceinfo.</span></span><span class="sig-name descname"><span class="pre">DeviceMemoryInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>API to fetch information about device memory segments</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.bytes_or_words">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bytes_or_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address_param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.bytes_or_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return multiplier for address parameter</p>
+<p>The returned multiplier can be used to convert the address parameter to byte address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address_param</strong> – Address parameter (used as key in device info dict)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Multiplier to convert the address to byte address</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.memory_info_by_address">
+<span class="sig-name descname"><span class="pre">memory_info_by_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">byte_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'address'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'size'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.memory_info_by_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information about the memory type for a given byte address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>byte_address</strong> – Memory address to check</p></li>
+<li><p><strong>address_type</strong> – Selects between normal addresses and addresses used in hex files
+(ADDRESS vs HEXFILE_ADDRESS)</p></li>
+<li><p><strong>size_type</strong> – Selects between normal size and size used in hexfiles (size vs hexfile_size)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.memory_info_by_address_range">
+<span class="sig-name descname"><span class="pre">memory_info_by_address_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'address'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'size'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.memory_info_by_address_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all memories applicable for the address range(start, stop)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – Start address (byte)</p></li>
+<li><p><strong>stop</strong> – End address (byte)</p></li>
+<li><p><strong>address_type</strong> – Selects between normal addresses and addresses used in hex files
+(address vs hexfile_address)</p></li>
+<li><p><strong>size_type</strong> – Selects between normal size and size used in hexfiles (size vs hexfile_size)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.memory_info_by_name">
+<span class="sig-name descname"><span class="pre">memory_info_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfo.DeviceMemoryInfo.memory_info_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information about the requested memory</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfo.get_supported_devices">
+<span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.deviceinfo.</span></span><span class="sig-name descname"><span class="pre">get_supported_devices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfo.get_supported_devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all supported devices</p>
+<p>A device is supported if it has a device model file in the devices folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of devices</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfo.getdeviceinfo">
+<span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.deviceinfo.</span></span><span class="sig-name descname"><span class="pre">getdeviceinfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">devicename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfo.getdeviceinfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Looks up device info for a given part</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>devicename</strong> – device to look up</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>device information dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.deviceinfo.deviceinfokeys">
+<span id="pymcuprog-deviceinfo-deviceinfokeys-module"></span><h2>pymcuprog.deviceinfo.deviceinfokeys module<a class="headerlink" href="#module-pymcuprog.deviceinfo.deviceinfokeys" title="Permalink to this heading">¶</a></h2>
+<p>Definitions of keys for device info dictionaries</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.deviceinfokeys.</span></span><span class="sig-name descname"><span class="pre">DeviceInfoKeys</span></span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class with common device info keys</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.ARCHITECTURE">
+<span class="sig-name descname"><span class="pre">ARCHITECTURE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'architecture'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.ARCHITECTURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.DEVICE_ID">
+<span class="sig-name descname"><span class="pre">DEVICE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'device_id'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.DEVICE_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.INTERFACE">
+<span class="sig-name descname"><span class="pre">INTERFACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'interface'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.INTERFACE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.NAME">
+<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'name'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.get_all">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of all keys</p>
+<p>:return List of all valid keys (baseclass and any subclass keys if run on a subclass)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.deviceinfokeys.</span></span><span class="sig-name descname"><span class="pre">DeviceInfoKeysAvr</span></span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys" title="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceInfoKeys</span></code></a></p>
+<p>Keys specific to AVR device info files</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.ADDRESS_SIZE">
+<span class="sig-name descname"><span class="pre">ADDRESS_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'address_size'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.ADDRESS_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.DATA_ADDRESS_SPACE">
+<span class="sig-name descname"><span class="pre">DATA_ADDRESS_SPACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'data_space_base'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.DATA_ADDRESS_SPACE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.HV_IMPLEMENTATION">
+<span class="sig-name descname"><span class="pre">HV_IMPLEMENTATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hv_implementation'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.HV_IMPLEMENTATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.NVMCTRL_BASE">
+<span class="sig-name descname"><span class="pre">NVMCTRL_BASE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'nvmctrl_base'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.NVMCTRL_BASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.OCD_BASE">
+<span class="sig-name descname"><span class="pre">OCD_BASE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ocd_base'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.OCD_BASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.PROG_CLOCK_KHZ">
+<span class="sig-name descname"><span class="pre">PROG_CLOCK_KHZ</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'prog_clock_khz'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.PROG_CLOCK_KHZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.SYSCFG_BASE">
+<span class="sig-name descname"><span class="pre">SYSCFG_BASE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'syscfg_base'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr.SYSCFG_BASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr32">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.deviceinfokeys.</span></span><span class="sig-name descname"><span class="pre">DeviceInfoKeysAvr32</span></span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr32" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys" title="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceInfoKeys</span></code></a></p>
+<p>Keys specific to 32-bit AVR device info files</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr32.RESET_DOMAINS">
+<span class="sig-name descname"><span class="pre">RESET_DOMAINS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reset_domains'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysAvr32.RESET_DOMAINS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysPic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.deviceinfokeys.</span></span><span class="sig-name descname"><span class="pre">DeviceInfoKeysPic</span></span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysPic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys" title="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeys"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceInfoKeys</span></code></a></p>
+<p>Keys specific to PIC device info files</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysPic.DEFAULT_BULK_ERASE_ADDRESS">
+<span class="sig-name descname"><span class="pre">DEFAULT_BULK_ERASE_ADDRESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default_bulk_erase_address'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceInfoKeysPic.DEFAULT_BULK_ERASE_ADDRESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.deviceinfokeys.</span></span><span class="sig-name descname"><span class="pre">DeviceMemoryInfoKeys</span></span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Keys for device memory info dictionary</p>
+<p>These keys are found in the dictionaries returned by DeviceMemoryInfo for each memory type</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.ADDRESS">
+<span class="sig-name descname"><span class="pre">ADDRESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'address'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.ADDRESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.CHIPERASE_EFFECT">
+<span class="sig-name descname"><span class="pre">CHIPERASE_EFFECT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'chiperase_effect'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.CHIPERASE_EFFECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.ERASE_ADDRESS">
+<span class="sig-name descname"><span class="pre">ERASE_ADDRESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'erase_address'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.ERASE_ADDRESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.HEXFILE_ADDRESS">
+<span class="sig-name descname"><span class="pre">HEXFILE_ADDRESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hexfile_address'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.HEXFILE_ADDRESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.HEXFILE_SIZE">
+<span class="sig-name descname"><span class="pre">HEXFILE_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hexfile_size'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.HEXFILE_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.ISOLATED_ERASE">
+<span class="sig-name descname"><span class="pre">ISOLATED_ERASE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'isolated_erase'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.ISOLATED_ERASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.NAME">
+<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'name'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.PAGE_SIZE">
+<span class="sig-name descname"><span class="pre">PAGE_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'page_size'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.PAGE_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.READ_SIZE">
+<span class="sig-name descname"><span class="pre">READ_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'read_size'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.READ_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.SIZE">
+<span class="sig-name descname"><span class="pre">SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'size'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.VERIFY_MASK">
+<span class="sig-name descname"><span class="pre">VERIFY_MASK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'verify_mask'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.VERIFY_MASK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.WRITE_SIZE">
+<span class="sig-name descname"><span class="pre">WRITE_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'write_size'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.WRITE_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.get_all">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.deviceinfokeys.DeviceMemoryInfoKeys.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of all keys</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of all valid keys (baseclass and any subclass keys if run on a subclass)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.deviceinfo.eraseflags">
+<span id="pymcuprog-deviceinfo-eraseflags-module"></span><h2>pymcuprog.deviceinfo.eraseflags module<a class="headerlink" href="#module-pymcuprog.deviceinfo.eraseflags" title="Permalink to this heading">¶</a></h2>
+<p>Definitions of erase related flags for the device models</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.eraseflags.get_list_of_chiperase_effects">
+<span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.eraseflags.</span></span><span class="sig-name descname"><span class="pre">get_list_of_chiperase_effects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.eraseflags.get_list_of_chiperase_effects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all ChiperaseEffect values</p>
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.deviceinfo.memorynames">
+<span id="pymcuprog-deviceinfo-memorynames-module"></span><h2>pymcuprog.deviceinfo.memorynames module<a class="headerlink" href="#module-pymcuprog.deviceinfo.memorynames" title="Permalink to this heading">¶</a></h2>
+<p>Memory name definitions</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNameAliases">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.memorynames.</span></span><span class="sig-name descname"><span class="pre">MemoryNameAliases</span></span><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNameAliases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Memory names that are actually not real memories but an alias for several memories</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNameAliases.ALL">
+<span class="sig-name descname"><span class="pre">ALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'all'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNameAliases.ALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.deviceinfo.memorynames.</span></span><span class="sig-name descname"><span class="pre">MemoryNames</span></span><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Memory names corresponding to target device memories</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.CALIBRATION_ROW">
+<span class="sig-name descname"><span class="pre">CALIBRATION_ROW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'calibration_row'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.CALIBRATION_ROW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.CONFIG_WORD">
+<span class="sig-name descname"><span class="pre">CONFIG_WORD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'config_words'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.CONFIG_WORD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.EEPROM">
+<span class="sig-name descname"><span class="pre">EEPROM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'eeprom'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.EEPROM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.FLASH">
+<span class="sig-name descname"><span class="pre">FLASH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'flash'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.FLASH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.FUSES">
+<span class="sig-name descname"><span class="pre">FUSES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fuses'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.FUSES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.ICD">
+<span class="sig-name descname"><span class="pre">ICD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'icd'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.ICD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.INTERNAL_SRAM">
+<span class="sig-name descname"><span class="pre">INTERNAL_SRAM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'internal_sram'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.INTERNAL_SRAM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.LOCKBITS">
+<span class="sig-name descname"><span class="pre">LOCKBITS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'lockbits'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.LOCKBITS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.SIGNATURES">
+<span class="sig-name descname"><span class="pre">SIGNATURES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'signatures'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.SIGNATURES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.USER_ID">
+<span class="sig-name descname"><span class="pre">USER_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'user_id'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.USER_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.USER_ROW">
+<span class="sig-name descname"><span class="pre">USER_ROW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'user_row'</span></em><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.USER_ROW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pymcuprog.deviceinfo.memorynames.MemoryNames.get_all">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.deviceinfo.memorynames.MemoryNames.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of all memories representing actual device memories</p>
+<p>:return List of all memory names representing actual device memories</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pymcuprog.deviceinfo">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pymcuprog.deviceinfo" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrapper">
+        <div class="footer" role="contentinfo">
+            © Copyright 2021, Microchip Technology Inc
+        </div>
+    </div>
+  </body>
+</html>

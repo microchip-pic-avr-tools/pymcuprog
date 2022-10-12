@@ -1,0 +1,10 @@
+# External packages
+pyserial
+intelhex
+appdirs
+# pathlib2 is needed for Python 2.7 compatibility
+pathlib2; python_version < "3"
+pyyaml
+
+# Microchip packages
+pyedbglib>=2.20
