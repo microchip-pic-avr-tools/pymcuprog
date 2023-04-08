@@ -127,6 +127,7 @@ pymcuprog supports:
 * EDBG - on-board debugger on Xplained Pro/Ultra
 * mEDBG - on-board debugger on Xplained Mini/Nano
 * JTAGICE3 (firmware version 3.0 or newer)
+* Serial (TTY/COM) and RFC2217 compatible devices (serialupdi)
 
 Although not all functionality is provided on all debuggers/boards.  See device support section below.
 
