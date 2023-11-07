@@ -96,7 +96,8 @@ class DeviceMemoryInfo:
             MemoryNames.FUSES: 0x820000,
             MemoryNames.LOCKBITS: 0x830000,
             MemoryNames.SIGNATURES: 0x840000,
-            MemoryNames.USER_ROW: 0x850000
+            MemoryNames.USER_ROW: 0x850000,
+            MemoryNames.BOOT_ROW: 0x860000
         }
 
         # erase_address is the address for the erase of the memory.
@@ -205,7 +206,7 @@ class DeviceMemoryInfo:
             mask = [0xFF, 0xFF]
 
         # PIC24 is word addressed and has 24-bit flash, except EEPROM which is word oriented
-        elif architecture == 'PIC24':
+        elif architecture in ['PIC24', 'dsPIC33']:
             if memtype in [MemoryNames.EEPROM]:
                 mask = [0xFF, 0xFF]
             else:

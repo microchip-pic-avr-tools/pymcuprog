@@ -45,4 +45,22 @@ DEVICE_INFO = {
     'eeprom_read_size_bytes': 1,
     'eeprom_chiperase_effect': ChiperaseEffect.CONDITIONALLY_ERASED_PIC,
     'eeprom_isolated_erase': True,
+
+    # DIA
+    'dia_address_byte': 0x3F0000,
+    'dia_size_bytes': 60,
+    'dia_page_size_bytes': 1,
+    'dia_write_size_bytes': 0,
+    'dia_read_size_bytes': 1,
+    'dia_chiperase_effect': ChiperaseEffect.NOT_ERASED,
+    'dia_isolated_erase': False,
+
+    # DCI
+    'dci_address_byte': 0x3FFF00,
+    'dci_size_bytes': 10,
+    'dci_page_size_bytes': 1,
+    'dci_write_size_bytes': 0,
+    'dci_read_size_bytes': 1,
+    'dci_chiperase_effect': ChiperaseEffect.NOT_ERASED,
+    'dci_isolated_erase': False,
 }

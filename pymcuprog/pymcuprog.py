@@ -203,7 +203,8 @@ def main():
                         help="USB serial number of the unit to use")
 
     # Memtype
-    memtype_helpstring = "memory area to access: {}".format(MemoryNameAliases.ALL)
+    memtype_helpstring = "memory area to access (not used when programming from an Intel(R) hex file): '{}'".format(
+        MemoryNameAliases.ALL)
     for memtype in MemoryNames.get_all():
         memtype_helpstring += ", '{}'".format(memtype)
     parser.add_argument("-m", "--memory",
@@ -264,7 +265,7 @@ def main():
                         help="Print pymcuprog release details and exit")
 
     parser.add_argument("--erase",
-                        help="erase memory section before writing (from an Intel(R) hex file only)",
+                        help="erase memory section before writing (from an Intel hex file only)",
                         action="store_true")
 
     parser.add_argument("--verify",

@@ -1,6 +1,6 @@
 The MIT License
 
-Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
+Copyright (c) 2023 Microchip Technology Inc. and its subsidiaries.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

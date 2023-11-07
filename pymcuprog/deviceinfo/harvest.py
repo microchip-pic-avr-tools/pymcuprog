@@ -37,6 +37,8 @@ def map_atdf_memory_name_to_pymcuprog_name(atdf_name):
     if atdf_name in ['user_signatures', 'userrow']:
         # Datasheets actually use user_row for UPDI devices at least
         pymcuprog_name = MemoryNames.USER_ROW
+    if atdf_name == 'bootrow':
+        pymcuprog_name = MemoryNames.BOOT_ROW
     if atdf_name == 'eeprom':
         pymcuprog_name = MemoryNames.EEPROM
     if atdf_name in ['fuses', 'fuse']:
@@ -66,7 +68,7 @@ def determine_chiperase_effect(memoryname, architecture):
             return 'ChiperaseEffect.NOT_ERASED'
         elif memoryname in [MemoryNames.LOCKBITS, MemoryNames.FLASH]:
             return 'ChiperaseEffect.ALWAYS_ERASED'
-        elif memoryname in [MemoryNames.EEPROM]:
+        elif memoryname in [MemoryNames.EEPROM, MemoryNames.BOOT_ROW]:
             return 'ChiperaseEffect.CONDITIONALLY_ERASED_AVR'
 
     return '# To be filled in manually'
@@ -86,7 +88,7 @@ def determine_isolated_erase(memoryname, architecture):
         if 'avr8x' in architecture and memoryname in [MemoryNames.FLASH]:
             # UPDI devices now supports isolated erase for flash
             return 'True'
-        if memoryname in [MemoryNames.USER_ROW, MemoryNames.EEPROM]:
+        if memoryname in [MemoryNames.USER_ROW, MemoryNames.EEPROM, MemoryNames.BOOT_ROW]:
             return 'True'
         elif memoryname in [MemoryNames.INTERNAL_SRAM, MemoryNames.LOCKBITS, MemoryNames.FLASH, MemoryNames.FUSES, MemoryNames.SIGNATURES]:
             return 'False'

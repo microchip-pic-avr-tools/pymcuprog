@@ -11,7 +11,7 @@ from .deviceinfo import deviceinfo
 from .deviceinfo.deviceinfokeys import DeviceInfoKeysAvr, DeviceMemoryInfoKeys
 from .deviceinfo.memorynames import MemoryNames
 from .serialupdi.application import UpdiApplication
-from .pymcuprog_errors import PymcuprogSessionError, PymcuprogDeviceLockedError
+from .pymcuprog_errors import PymcuprogSessionError, PymcuprogDeviceLockedError, PymcuprogSerialUpdiLockedError
 
 # This is a data class so it should not need any methods but will have many instance variables
 # pylint: disable=too-many-instance-attributes,too-few-public-methods
@@ -69,7 +69,7 @@ class NvmAccessProviderSerial(NvmAccessProvider):
         """
         try:
             self.avr.enter_progmode()
-        except IOError as inst:
+        except PymcuprogSerialUpdiLockedError:
             if ('user-row-locked-device' in self.options and self.options['user-row-locked-device']):
                 self.logger.info("Device is locked. Proceeding to write USER ROW...")
             elif 'chip-erase-locked-device' in self.options and self.options['chip-erase-locked-device']:
@@ -193,6 +193,8 @@ class NvmAccessProviderSerial(NvmAccessProvider):
             elif memtype_string == MemoryNames.EEPROM:
                 self.avr.nvm.write_eeprom(offset_aligned, chunk)
             elif memtype_string == MemoryNames.USER_ROW:
+                self.avr.nvm.write_user_row(offset_aligned, chunk)
+            elif memtype_string == MemoryNames.BOOT_ROW:
                 self.avr.nvm.write_user_row(offset_aligned, chunk)
             else:
                 self.avr.nvm.write_flash(offset_aligned, chunk)

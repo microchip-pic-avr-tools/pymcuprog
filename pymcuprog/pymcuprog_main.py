@@ -23,7 +23,8 @@ from .pymcuprog_errors import PymcuprogNotSupportedError, PymcuprogSessionConfig
     PymcuprogToolConnectionError, PymcuprogDeviceLockedError, PymcuprogError
 
 try:
-    from .version import VERSION, BUILD_DATE, COMMIT_ID
+    from . import __version__ as VERSION
+    from . import BUILD_DATE, COMMIT_ID
 except ImportError:
     VERSION = "0.0.0"
     COMMIT_ID = "N/A"
@@ -90,7 +91,7 @@ def pymcuprog(args):
         print("Starting timer")
         time_start = time.time()
     try:
-        _programming_actions(backend, args)
+        status = _programming_actions(backend, args)
 
     except PymcuprogError as exc:
         logger.error("%s", exc)
@@ -345,7 +346,7 @@ def _action_write(backend, args):
 
             print("Writing from hex file...")
 
-            _write_memory_segments(backend, result, args.verify)
+            return _write_memory_segments(backend, result, args.verify)
         else:
             with open(filepath, "rb") as binfile:
                 data_from_file = bytearray(binfile.read())
@@ -361,7 +362,8 @@ def _action_write(backend, args):
             if args.verify:
                 print("Verifying from binary file...")
                 # Verify content, an exception is thrown on mismatch
-                backend.verify_memory(data_from_file, args.memory, args.offset)
+                if not backend.verify_memory(data_from_file, args.memory, args.offset):
+                    return STATUS_FAILURE
     elif args.literal:
         if args.erase:
             raise PymcuprogNotSupportedError("Erase switch (--erase) is only supported when writing a hex file!")
@@ -371,7 +373,8 @@ def _action_write(backend, args):
         if args.verify:
             print("Verifying literal values...")
             # Verify content, an exception is thrown on mismatch
-            backend.verify_memory(bytearray(args.literal), args.memory, args.offset)
+            if not backend.verify_memory(bytearray(args.literal), args.memory, args.offset):
+                return STATUS_FAILURE
     else:
         print("Error: for writing use either -f <file> or -l <literal>")
 
@@ -387,6 +390,7 @@ def _write_memory_segments(backend, memory_segments, verify):
         deviceinfo.deviceinfo.DeviceMemoryInfo).
     :param verify: If True verify the written data by reading it back and compare
     """
+    status = STATUS_SUCCESS
     for segment in memory_segments:
         memory_name = segment.memory_info[DeviceMemoryInfoKeys.NAME]
         print("Writing {}...".format(memory_name))
@@ -398,6 +402,8 @@ def _write_memory_segments(backend, memory_segments, verify):
                 print("OK")
             else:
                 print("Verification failed!")
+                status = STATUS_FAILURE
+    return status
 
 def _action_reset(backend):
     backend.hold_in_reset()

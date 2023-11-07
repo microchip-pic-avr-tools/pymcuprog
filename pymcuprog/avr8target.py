@@ -40,6 +40,8 @@ class AvrDevice(object):
             memtype = Avr8Protocol.AVR8_MEMTYPE_EEPROM
         elif memtype_string in [MemoryNames.USER_ROW]:
             memtype = Avr8Protocol.AVR8_MEMTYPE_USER_SIGNATURE
+        elif memtype_string in [MemoryNames.BOOT_ROW]:
+            memtype = Avr8Protocol.AVR8_MEMTYPE_BOOT_ROW
         elif memtype_string in [MemoryNames.SIGNATURES]:
             memtype = Avr8Protocol.AVR8_MEMTYPE_CALIBRATION_SIGNATURE
         elif memtype_string == MemoryNames.FUSES:

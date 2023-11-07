@@ -85,6 +85,8 @@ lockbits
 signatures
 user_id
 user_row
+dia
+dci
 ```
 
 ## Optional arguments and switches

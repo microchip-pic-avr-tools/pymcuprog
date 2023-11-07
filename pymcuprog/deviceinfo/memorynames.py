@@ -18,6 +18,7 @@ class MemoryNames(object):
     CONFIG_WORD = 'config_words'
     USER_ID = 'user_id'
     USER_ROW = 'user_row'
+    BOOT_ROW = 'boot_row'
     EEPROM = 'eeprom'
     FUSES = 'fuses'
     CALIBRATION_ROW = 'calibration_row'
@@ -25,6 +26,8 @@ class MemoryNames(object):
     LOCKBITS = 'lockbits'
     SIGNATURES = 'signatures'
     INTERNAL_SRAM = 'internal_sram'
+    DIA = 'dia'
+    DCI = 'dci'
 
     @classmethod
     def get_all(cls):

@@ -117,6 +117,7 @@ class UpdiPhysical:
         Note that the byte will echo back
 
         :param command: command to send
+        :type command: list of bytes
         """
         self._loginfo("send", command)
 
@@ -130,6 +131,7 @@ class UpdiPhysical:
         Receives a frame of a known number of chars from UPDI
 
         :param size: bytes to receive
+        :type size: int
         """
         response = bytearray()
         timeout = 1

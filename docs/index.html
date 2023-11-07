@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pymcuprog documentation &#8212; pymcuprog  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/microchip.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/microchip.css?v=e28e0ba5" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pymcuprog package" href="pymcuprog.html" /> 
@@ -54,16 +50,7 @@
   <div>
     <h3><a href="#">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">pymcuprog documentation</a><ul>
-<li><a class="reference internal" href="#python-mcu-programmer-utility">Python MCU programmer utility</a></li>
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#command-line-interface-usage">Command-line interface usage</a></li>
-<li><a class="reference internal" href="#library-usage">Library usage</a></li>
-<li><a class="reference internal" href="#logging">Logging</a></li>
-<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li><a class="reference internal" href="#supported-devices-and-tools">Supported devices and tools</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">pymcuprog documentation</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
@@ -98,7 +85,10 @@
                     
   <section id="pymcuprog-documentation">
 <h1>pymcuprog documentation<a class="headerlink" href="#pymcuprog-documentation" title="Permalink to this heading">¶</a></h1>
-<section id="python-mcu-programmer-utility">
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pymcuprog.</span></span><span class="sig-name descname"><span class="pre">BUILD_DATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'2023-11-01</span> <span class="pre">11:26:17'</span></em></dt>
+<dd><section id="python-mcu-programmer-utility">
 <h2>Python MCU programmer utility<a class="headerlink" href="#python-mcu-programmer-utility" title="Permalink to this heading">¶</a></h2>
 <p>pymcuprog is a utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers</p>
 </section>
@@ -148,7 +138,7 @@
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Device ID is </span><span class="si">{0:06X}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s2">&quot;little&quot;</span><span class="p">)))</span>
 
 <span class="c1"># Print the pymcuprog package version:</span>
-<span class="kn">from</span> <span class="nn">pymcuprog.version</span> <span class="kn">import</span> <span class="n">VERSION</span> <span class="k">as</span> <span class="n">pymcuprog_version</span>
+<span class="kn">from</span> <span class="nn">pymcuprog</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">pymcuprog_version</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pymcuprog version </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pymcuprog_version</span><span class="p">))</span>
 
 <span class="c1"># In addition, the CLI-backend API is versioned for convenience:</span>
@@ -199,6 +189,8 @@ debuggers and devices, although not all device families/interfaces have been imp
 </dd>
 </dl>
 </section>
+</dd></dl>
+
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -219,6 +211,9 @@ debuggers and devices, although not all device families/interfaces have been imp
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.constants">pymcuprog.serialupdi.constants module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.link">pymcuprog.serialupdi.link module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.nvm">pymcuprog.serialupdi.nvm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.nvmp0">pymcuprog.serialupdi.nvmp0 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.nvmp2">pymcuprog.serialupdi.nvmp2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.nvmp3">pymcuprog.serialupdi.nvmp3 module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.physical">pymcuprog.serialupdi.physical module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.readwrite">pymcuprog.serialupdi.readwrite module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.timeout">pymcuprog.serialupdi.timeout module</a></li>
@@ -623,20 +618,20 @@ debuggers and devices, although not all device families/interfaces have been imp
 <li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogEraseError"><code class="docutils literal notranslate"><span class="pre">PymcuprogEraseError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogError"><code class="docutils literal notranslate"><span class="pre">PymcuprogError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogNotSupportedError"><code class="docutils literal notranslate"><span class="pre">PymcuprogNotSupportedError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiLockedError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiLockedError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiNvmError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiNvmError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiNvmTimeout"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiNvmTimeout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiProtocolError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiProtocolError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogSessionConfigError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSessionConfigError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogSessionError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSessionError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogTargetVoltageError"><code class="docutils literal notranslate"><span class="pre">PymcuprogTargetVoltageError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogToolConfigurationError"><code class="docutils literal notranslate"><span class="pre">PymcuprogToolConfigurationError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.pymcuprog_errors.PymcuprogToolConnectionError"><code class="docutils literal notranslate"><span class="pre">PymcuprogToolConnectionError</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pymcuprog.html#module-pymcuprog">Module contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#python-mcu-programmer-utility">Python MCU programmer utility</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#command-line-interface-usage">Command-line interface usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#library-usage">Library usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#logging">Logging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#dependencies">Dependencies</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#supported-devices-and-tools">Supported devices and tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.html#pymcuprog.BUILD_DATE"><code class="docutils literal notranslate"><span class="pre">BUILD_DATE</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -660,7 +655,7 @@ debuggers and devices, although not all device families/interfaces have been imp
     </div>
     <div class="footer-wrapper">
         <div class="footer" role="contentinfo">
-            © Copyright 2021, Microchip Technology Inc
+            © Copyright 2023, Microchip Technology Inc
         </div>
     </div>
   </body>

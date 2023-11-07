@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
 project = 'pymcuprog'
-copyright = '2021, Microchip Technology Inc'
+copyright = '2023, Microchip Technology Inc'
 author = 'Microchip Technology Inc'
 
 

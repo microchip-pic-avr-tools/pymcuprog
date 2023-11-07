@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pymcuprog package &#8212; pymcuprog  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/microchip.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/microchip.css?v=e28e0ba5" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pymcuprog.deviceinfo package" href="pymcuprog.deviceinfo.html" />
@@ -456,20 +452,20 @@
 <li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogEraseError"><code class="docutils literal notranslate"><span class="pre">PymcuprogEraseError</span></code></a></li>
 <li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogError"><code class="docutils literal notranslate"><span class="pre">PymcuprogError</span></code></a></li>
 <li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogNotSupportedError"><code class="docutils literal notranslate"><span class="pre">PymcuprogNotSupportedError</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiError</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiLockedError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiLockedError</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiNvmError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiNvmError</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiNvmTimeout"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiNvmTimeout</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiProtocolError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiProtocolError</span></code></a></li>
 <li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSessionConfigError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSessionConfigError</span></code></a></li>
 <li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSessionError"><code class="docutils literal notranslate"><span class="pre">PymcuprogSessionError</span></code></a></li>
+<li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogTargetVoltageError"><code class="docutils literal notranslate"><span class="pre">PymcuprogTargetVoltageError</span></code></a></li>
 <li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogToolConfigurationError"><code class="docutils literal notranslate"><span class="pre">PymcuprogToolConfigurationError</span></code></a></li>
 <li><a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogToolConnectionError"><code class="docutils literal notranslate"><span class="pre">PymcuprogToolConnectionError</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-pymcuprog">Module contents</a><ul>
-<li><a class="reference internal" href="#python-mcu-programmer-utility">Python MCU programmer utility</a></li>
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#command-line-interface-usage">Command-line interface usage</a></li>
-<li><a class="reference internal" href="#library-usage">Library usage</a></li>
-<li><a class="reference internal" href="#logging">Logging</a></li>
-<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li><a class="reference internal" href="#supported-devices-and-tools">Supported devices and tools</a></li>
+<li><a class="reference internal" href="#pymcuprog.BUILD_DATE"><code class="docutils literal notranslate"><span class="pre">BUILD_DATE</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -585,8 +581,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pymcuprog.deviceinfo.html#pymcuprog.deviceinfo.memorynames.MemoryNames"><code class="docutils literal notranslate"><span class="pre">MemoryNames</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#pymcuprog.deviceinfo.memorynames.MemoryNames.BOOT_ROW"><code class="docutils literal notranslate"><span class="pre">MemoryNames.BOOT_ROW</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#pymcuprog.deviceinfo.memorynames.MemoryNames.CALIBRATION_ROW"><code class="docutils literal notranslate"><span class="pre">MemoryNames.CALIBRATION_ROW</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#pymcuprog.deviceinfo.memorynames.MemoryNames.CONFIG_WORD"><code class="docutils literal notranslate"><span class="pre">MemoryNames.CONFIG_WORD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#pymcuprog.deviceinfo.memorynames.MemoryNames.DCI"><code class="docutils literal notranslate"><span class="pre">MemoryNames.DCI</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#pymcuprog.deviceinfo.memorynames.MemoryNames.DIA"><code class="docutils literal notranslate"><span class="pre">MemoryNames.DIA</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#pymcuprog.deviceinfo.memorynames.MemoryNames.EEPROM"><code class="docutils literal notranslate"><span class="pre">MemoryNames.EEPROM</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#pymcuprog.deviceinfo.memorynames.MemoryNames.FLASH"><code class="docutils literal notranslate"><span class="pre">MemoryNames.FLASH</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.deviceinfo.html#pymcuprog.deviceinfo.memorynames.MemoryNames.FUSES"><code class="docutils literal notranslate"><span class="pre">MemoryNames.FUSES</span></code></a></li>
@@ -667,48 +666,122 @@
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdi.erase_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdi.erase_eeprom()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdi.erase_flash_page"><code class="docutils literal notranslate"><span class="pre">NvmUpdi.erase_flash_page()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdi.erase_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdi.erase_user_row()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdi.execute_nvm_command"><code class="docutils literal notranslate"><span class="pre">NvmUpdi.execute_nvm_command()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdi.wait_nvm_ready"><code class="docutils literal notranslate"><span class="pre">NvmUpdi.wait_nvm_ready()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdi.write_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdi.write_eeprom()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdi.write_flash"><code class="docutils literal notranslate"><span class="pre">NvmUpdi.write_flash()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdi.write_fuse"><code class="docutils literal notranslate"><span class="pre">NvmUpdi.write_fuse()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdi.write_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdi.write_user_row()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.chip_erase"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2.chip_erase()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.erase_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2.erase_eeprom()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.erase_flash_page"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2.erase_flash_page()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.erase_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2.erase_user_row()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2.write_eeprom()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_flash"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2.write_flash()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_fuse"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2.write_fuse()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_nvm"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2.write_nvm()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV2.write_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV2.write_user_row()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.chip_erase"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3.chip_erase()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.erase_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3.erase_eeprom()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.erase_flash_page"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3.erase_flash_page()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.erase_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3.erase_user_row()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3.write_eeprom()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_flash"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3.write_flash()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_fuse"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3.write_fuse()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_nvm"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3.write_nvm()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiAvrV3.write_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiAvrV3.write_user_row()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.nvmp0">pymcuprog.serialupdi.nvmp0 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCMD_CHIP_ERASE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCMD_CHIP_ERASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCMD_ERASE_EEPROM"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCMD_ERASE_EEPROM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCMD_ERASE_PAGE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCMD_ERASE_PAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCMD_ERASE_WRITE_PAGE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCMD_ERASE_WRITE_PAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCMD_NOP"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCMD_NOP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCMD_PAGE_BUFFER_CLR"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCMD_PAGE_BUFFER_CLR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCMD_WRITE_FUSE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCMD_WRITE_FUSE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCMD_WRITE_PAGE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCMD_WRITE_PAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCTRL_ADDR"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCTRL_ADDR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCTRL_CTRLA"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCTRL_CTRLA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCTRL_CTRLB"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCTRL_CTRLB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCTRL_DATA"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCTRL_DATA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCTRL_INTCTRL"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCTRL_INTCTRL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCTRL_INTFLAGS"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCTRL_INTFLAGS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.NVMCTRL_STATUS"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.NVMCTRL_STATUS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.STATUS_EEPROM_BUSY_bp"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.STATUS_EEPROM_BUSY_bp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.STATUS_FLASH_BUSY_bp"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.STATUS_FLASH_BUSY_bp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.STATUS_WRITE_ERROR_bp"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.STATUS_WRITE_ERROR_bp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.chip_erase"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.chip_erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.erase_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.erase_eeprom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.erase_flash_page"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.erase_flash_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.erase_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.erase_user_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.execute_nvm_command"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.execute_nvm_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.wait_nvm_ready"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.wait_nvm_ready()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.write_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.write_eeprom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.write_flash"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.write_flash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.write_fuse"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.write_fuse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.write_nvm"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.write_nvm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp0.NvmUpdiP0.write_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP0.write_user_row()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0.chip_erase"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0.chip_erase()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0.erase_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0.erase_eeprom()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0.erase_flash_page"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0.erase_flash_page()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0.erase_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0.erase_user_row()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0.write_eeprom()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_flash"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0.write_flash()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_fuse"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0.write_fuse()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_nvm"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0.write_nvm()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvm.NvmUpdiV0.write_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiV0.write_user_row()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.nvmp2">pymcuprog.serialupdi.nvmp2 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCMD_CHIP_ERASE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCMD_CHIP_ERASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCMD_EEPROM_BYTE_ERASE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCMD_EEPROM_BYTE_ERASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCMD_EEPROM_ERASE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCMD_EEPROM_ERASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCMD_EEPROM_ERASE_WRITE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCMD_EEPROM_ERASE_WRITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCMD_EEPROM_WRITE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCMD_EEPROM_WRITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCMD_FLASH_PAGE_ERASE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCMD_FLASH_PAGE_ERASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCMD_FLASH_WRITE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCMD_FLASH_WRITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCMD_NOCMD"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCMD_NOCMD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCMD_NOOP"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCMD_NOOP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCTRL_ADDR"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCTRL_ADDR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCTRL_CTRLA"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCTRL_CTRLA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCTRL_CTRLB"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCTRL_CTRLB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCTRL_DATA"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCTRL_DATA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCTRL_INTCTRL"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCTRL_INTCTRL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCTRL_INTFLAGS"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCTRL_INTFLAGS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.NVMCTRL_STATUS"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.NVMCTRL_STATUS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.STATUS_EEPROM_BUSY_bp"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.STATUS_EEPROM_BUSY_bp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.STATUS_FLASH_BUSY_bp"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.STATUS_FLASH_BUSY_bp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.STATUS_WRITE_ERROR_bm"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.STATUS_WRITE_ERROR_bm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.STATUS_WRITE_ERROR_bp"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.STATUS_WRITE_ERROR_bp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.chip_erase"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.chip_erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.erase_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.erase_eeprom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.erase_flash_page"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.erase_flash_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.erase_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.erase_user_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.execute_nvm_command"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.execute_nvm_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.wait_nvm_ready"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.wait_nvm_ready()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.write_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.write_eeprom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.write_flash"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.write_flash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.write_fuse"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.write_fuse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.write_nvm"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.write_nvm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp2.NvmUpdiP2.write_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP2.write_user_row()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymcuprog.serialupdi.html#module-pymcuprog.serialupdi.nvmp3">pymcuprog.serialupdi.nvmp3 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_CHIP_ERASE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_CHIP_ERASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_EEPROM_ERASE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_EEPROM_ERASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_EEPROM_PAGE_BUFFER_CLEAR"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_EEPROM_PAGE_BUFFER_CLEAR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_EEPROM_PAGE_ERASE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_EEPROM_PAGE_ERASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_EEPROM_PAGE_ERASE_WRITE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_EEPROM_PAGE_ERASE_WRITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_EEPROM_PAGE_WRITE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_EEPROM_PAGE_WRITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_FLASH_PAGE_BUFFER_CLEAR"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_FLASH_PAGE_BUFFER_CLEAR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_FLASH_PAGE_ERASE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_FLASH_PAGE_ERASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_FLASH_PAGE_ERASE_WRITE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_FLASH_PAGE_ERASE_WRITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_FLASH_PAGE_WRITE"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_FLASH_PAGE_WRITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_NOCMD"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_NOCMD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCMD_NOOP"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCMD_NOOP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCTRL_ADDR"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCTRL_ADDR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCTRL_CTRLA"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCTRL_CTRLA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCTRL_CTRLB"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCTRL_CTRLB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCTRL_DATA"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCTRL_DATA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCTRL_INTCTRL"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCTRL_INTCTRL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCTRL_INTFLAGS"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCTRL_INTFLAGS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.NVMCTRL_STATUS"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.NVMCTRL_STATUS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.STATUS_EEPROM_BUSY_bp"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.STATUS_EEPROM_BUSY_bp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.STATUS_FLASH_BUSY_bp"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.STATUS_FLASH_BUSY_bp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.STATUS_WRITE_ERROR_bm"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.STATUS_WRITE_ERROR_bm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.STATUS_WRITE_ERROR_bp"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.STATUS_WRITE_ERROR_bp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.chip_erase"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.chip_erase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.erase_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.erase_eeprom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.erase_flash_page"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.erase_flash_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.erase_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.erase_user_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.execute_nvm_command"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.execute_nvm_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.wait_nvm_ready"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.wait_nvm_ready()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.write_eeprom"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.write_eeprom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.write_flash"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.write_flash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.write_fuse"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.write_fuse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.write_nvm"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.write_nvm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pymcuprog.serialupdi.html#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.write_user_row"><code class="docutils literal notranslate"><span class="pre">NvmUpdiP3.write_user_row()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -3891,6 +3964,41 @@ i.e. erasing more memories than requested</p>
 </dd></dl>
 
 <dl class="py exception">
+<dt class="sig sig-object py" id="pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.pymcuprog_errors.</span></span><span class="sig-name descname"><span class="pre">PymcuprogSerialUpdiError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogError" title="pymcuprog.pymcuprog_errors.PymcuprogError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PymcuprogError</span></code></a></p>
+<p>Error class for SerialUPDI (pyupdi)</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiLockedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.pymcuprog_errors.</span></span><span class="sig-name descname"><span class="pre">PymcuprogSerialUpdiLockedError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiLockedError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError" title="pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiError</span></code></a></p>
+<p>The device is locked</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiNvmError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.pymcuprog_errors.</span></span><span class="sig-name descname"><span class="pre">PymcuprogSerialUpdiNvmError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiNvmError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError" title="pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiError</span></code></a></p>
+<p>An NVM CTRL error condition occurred</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiNvmTimeout">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.pymcuprog_errors.</span></span><span class="sig-name descname"><span class="pre">PymcuprogSerialUpdiNvmTimeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiNvmTimeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError" title="pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiError</span></code></a></p>
+<p>A timeout occurred waiting for NVM to be ready</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiProtocolError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.pymcuprog_errors.</span></span><span class="sig-name descname"><span class="pre">PymcuprogSerialUpdiProtocolError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiProtocolError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError" title="pymcuprog.pymcuprog_errors.PymcuprogSerialUpdiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PymcuprogSerialUpdiError</span></code></a></p>
+<p>An UPDI protocol error occurred.  This usually indicates an error in the code.</p>
+</dd></dl>
+
+<dl class="py exception">
 <dt class="sig sig-object py" id="pymcuprog.pymcuprog_errors.PymcuprogSessionConfigError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.pymcuprog_errors.</span></span><span class="sig-name descname"><span class="pre">PymcuprogSessionConfigError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.pymcuprog_errors.PymcuprogSessionConfigError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogError" title="pymcuprog.pymcuprog_errors.PymcuprogError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PymcuprogError</span></code></a></p>
@@ -3902,6 +4010,13 @@ i.e. erasing more memories than requested</p>
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.pymcuprog_errors.</span></span><span class="sig-name descname"><span class="pre">PymcuprogSessionError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.pymcuprog_errors.PymcuprogSessionError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogError" title="pymcuprog.pymcuprog_errors.PymcuprogError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PymcuprogError</span></code></a></p>
 <p>Signals that a session is not active</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pymcuprog.pymcuprog_errors.PymcuprogTargetVoltageError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymcuprog.pymcuprog_errors.</span></span><span class="sig-name descname"><span class="pre">PymcuprogTargetVoltageError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.pymcuprog_errors.PymcuprogTargetVoltageError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pymcuprog.pymcuprog_errors.PymcuprogError" title="pymcuprog.pymcuprog_errors.PymcuprogError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PymcuprogError</span></code></a></p>
+<p>Signals that the target voltage is out of spec</p>
 </dd></dl>
 
 <dl class="py exception">
@@ -3921,7 +4036,10 @@ i.e. erasing more memories than requested</p>
 </section>
 <section id="module-pymcuprog">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pymcuprog" title="Permalink to this heading">¶</a></h2>
-<section id="python-mcu-programmer-utility">
+<dl class="py data">
+<dt class="sig sig-object py" id="pymcuprog.BUILD_DATE">
+<span class="sig-prename descclassname"><span class="pre">pymcuprog.</span></span><span class="sig-name descname"><span class="pre">BUILD_DATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'2023-11-01</span> <span class="pre">11:26:17'</span></em><a class="headerlink" href="#pymcuprog.BUILD_DATE" title="Permalink to this definition">¶</a></dt>
+<dd><section id="python-mcu-programmer-utility">
 <h3>Python MCU programmer utility<a class="headerlink" href="#python-mcu-programmer-utility" title="Permalink to this heading">¶</a></h3>
 <p>pymcuprog is a utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers</p>
 </section>
@@ -3971,7 +4089,7 @@ i.e. erasing more memories than requested</p>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Device ID is </span><span class="si">{0:06X}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s2">&quot;little&quot;</span><span class="p">)))</span>
 
 <span class="c1"># Print the pymcuprog package version:</span>
-<span class="kn">from</span> <span class="nn">pymcuprog.version</span> <span class="kn">import</span> <span class="n">VERSION</span> <span class="k">as</span> <span class="n">pymcuprog_version</span>
+<span class="kn">from</span> <span class="nn">pymcuprog</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">pymcuprog_version</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pymcuprog version </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pymcuprog_version</span><span class="p">))</span>
 
 <span class="c1"># In addition, the CLI-backend API is versioned for convenience:</span>
@@ -4022,6 +4140,8 @@ debuggers and devices, although not all device families/interfaces have been imp
 </dd>
 </dl>
 </section>
+</dd></dl>
+
 </section>
 </section>
 
@@ -4032,7 +4152,7 @@ debuggers and devices, although not all device families/interfaces have been imp
     </div>
     <div class="footer-wrapper">
         <div class="footer" role="contentinfo">
-            © Copyright 2021, Microchip Technology Inc
+            © Copyright 2023, Microchip Technology Inc
         </div>
     </div>
   </body>

@@ -31,10 +31,10 @@ DEVICE_INFO = {
 
     # Config words
     'config_words_address_byte': 0x300000,
-    'config_words_size_words': 0x0D,
-    'config_words_page_size_words': 1,
-    'config_words_write_size_words': 1,
-    'config_words_read_size_words': 1,
+    'config_words_size_bytes': 26,
+    'config_words_page_size_bytes': 1,
+    'config_words_write_size_bytes': 1,
+    'config_words_read_size_bytes': 1,
     'config_words_chiperase_effect': ChiperaseEffect.ALWAYS_ERASED,
     'config_words_isolated_erase': False,
 
@@ -55,4 +55,22 @@ DEVICE_INFO = {
     'icd_read_size_words': 1,
     'icd_chiperase_effect': ChiperaseEffect.NOT_ERASED,
     'icd_isolated_erase': False,
+
+    # DIA
+    'dia_address_byte': 0x2C0000,
+    'dia_size_bytes': 60,
+    'dia_page_size_bytes': 1,
+    'dia_write_size_bytes': 0,
+    'dia_read_size_bytes': 1,
+    'dia_chiperase_effect': ChiperaseEffect.NOT_ERASED,
+    'dia_isolated_erase': False,
+
+    # DCI
+    'dci_address_byte': 0x3C0000,
+    'dci_size_bytes': 10,
+    'dci_page_size_bytes': 1,
+    'dci_write_size_bytes': 0,
+    'dci_read_size_bytes': 1,
+    'dci_chiperase_effect': ChiperaseEffect.NOT_ERASED,
+    'dci_isolated_erase': False,
 }

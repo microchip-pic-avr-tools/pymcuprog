@@ -29,7 +29,7 @@ class NvmAccessProviderCmsisDapUpdi(NvmAccessProviderCmsisDapAvr):
         # Default to 900k if not specified
         if not frequency:
             frequency = 900000
-        self.logger.info("UPDI baud rate: %dbps", frequency)
+        self.logger.debug("UPDI baud rate: %dbps", frequency)
 
         # High-voltage activation?
         use_hv = Avr8Protocol.UPDI_HV_NONE
@@ -64,7 +64,7 @@ class NvmAccessProviderCmsisDapUpdi(NvmAccessProviderCmsisDapAvr):
             to respond (this is default behavior if the callback is None), or if the user is another
             script it could toggle power automatically and then return.
         """
-        self.logger.info("UPDI-specific initialiser")
+        self.logger.debug("UPDI-specific initialiser")
 
         try:
             self.avr.activate_physical(user_interaction_callback=user_interaction_callback)
@@ -108,7 +108,7 @@ class NvmAccessProviderCmsisDapUpdi(NvmAccessProviderCmsisDapAvr):
         """
         Stop (deactivate) session for UPDI targets
         """
-        self.logger.info("UPDI-specific de-initialiser")
+        self.logger.debug("UPDI-specific de-initialiser")
         self.avr.leave_progmode()
         self.avr.deactivate_physical()
 
@@ -160,7 +160,11 @@ class NvmAccessProviderCmsisDapUpdi(NvmAccessProviderCmsisDapAvr):
         else:
             memory_name = memory_info[DeviceMemoryInfoKeys.NAME]
             if memory_name == MemoryNames.EEPROM:
-                erase_mode = Avr8Protocol.ERASE_EEPROM
+                # If an address is supplied, issue a page erase at that address
+                if address:
+                    erase_mode = Avr8Protocol.ERASE_EEPROM_PAGE
+                else:
+                    erase_mode = Avr8Protocol.ERASE_EEPROM
             elif memory_name == MemoryNames.USER_ROW:
                 erase_mode = Avr8Protocol.ERASE_USERSIG
             elif memory_name == MemoryNames.FLASH:
@@ -169,17 +173,21 @@ class NvmAccessProviderCmsisDapUpdi(NvmAccessProviderCmsisDapAvr):
                 erase_mode = Avr8Protocol.ERASE_CHIP
 
         self.logger.info("Erasing")
-        if address is None:
-            address = 0
 
         if memory_name == MemoryNames.FLASH:
-            page_size = memory_info[DeviceMemoryInfoKeys.PAGE_SIZE]
-            n_pages = memory_info[DeviceMemoryInfoKeys.SIZE]//page_size
-            self.logger.debug("Erasing %d pages of flash", n_pages)
-            for i in range(n_pages):
-                self.logger.debug("Erasing page starting at address 0x%08X", i*page_size)
-                self.avr.erase(erase_mode, address=i*page_size)
+            if address:
+                self.logger.info("Erasing single page starting at address 0x%08X", address)
+                self.avr.erase(erase_mode, address=address)
+            else:
+                page_size = memory_info[DeviceMemoryInfoKeys.PAGE_SIZE]
+                n_pages = memory_info[DeviceMemoryInfoKeys.SIZE]//page_size
+                self.logger.debug("Erasing %d pages of flash", n_pages)
+                for i in range(n_pages):
+                    self.logger.debug("Erasing page starting at address 0x%08X", i*page_size)
+                    self.avr.erase(erase_mode, address=i*page_size)
         else:
+            if address is None:
+                address = 0
             self.avr.erase(erase_mode, address)
 
     def write(self, memory_info, offset, data):

@@ -36,6 +36,30 @@ pymcuprog.serialupdi.nvm module
    :undoc-members:
    :show-inheritance:
 
+pymcuprog.serialupdi.nvmp0 module
+---------------------------------
+
+.. automodule:: pymcuprog.serialupdi.nvmp0
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pymcuprog.serialupdi.nvmp2 module
+---------------------------------
+
+.. automodule:: pymcuprog.serialupdi.nvmp2
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pymcuprog.serialupdi.nvmp3 module
+---------------------------------
+
+.. automodule:: pymcuprog.serialupdi.nvmp3
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pymcuprog.serialupdi.physical module
 ------------------------------------
 

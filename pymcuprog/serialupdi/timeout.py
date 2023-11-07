@@ -14,6 +14,7 @@ class Timeout:
         Start the expired counter instantly
 
         :param timeout_ms: milliseconds to count
+        :type timeout_ms: int
         """
 
         self.timeout_ms = timeout_ms
@@ -22,5 +23,8 @@ class Timeout:
     def expired(self):
         """
         Check if the timeout has expired
+
+        :returns: True if expired, False otherwise
+        :rtype: bool
         """
         return time.time() - self.start_time > self.timeout_ms / 1000.0

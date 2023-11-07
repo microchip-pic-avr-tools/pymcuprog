@@ -80,9 +80,10 @@ class NvmAccessProviderCmsisDapPic(NvmAccessProviderCmsisDapTool):
         :param numbytes: number of bytes to read
         :return: array of bytes read
         """
+        
         mem_name = memory_info[DeviceInfoKeys.NAME]
         offset += memory_info[DeviceMemoryInfoKeys.ADDRESS]
-        if mem_name in [MemoryNames.FLASH, MemoryNames.USER_ID, MemoryNames.ICD]:
+        if mem_name in [MemoryNames.FLASH, MemoryNames.USER_ID, MemoryNames.ICD, MemoryNames.DIA, MemoryNames.DCI]:
             mem = self.pic.read_flash_memory(offset, numbytes)
             return mem
         if mem_name == MemoryNames.CONFIG_WORD:
@@ -159,6 +160,14 @@ class NvmAccessProviderCmsisDapPic(NvmAccessProviderCmsisDapTool):
         pic_id = self.pic.read_id()
         id_array = binary.pack_le16(pic_id)
         self.logger.info("Device ID read out: '%04X'", pic_id)
+
+        # Read out the device revision, if available
+        try:
+            if hasattr(self.pic, 'read_device_revision'):
+                pic_rev = self.pic.read_device_revision()
+                self.logger.info("Device revision read out: '%04X'", pic_rev)
+        except AttributeError:
+            self.logger.info("Unable to read device revision with this DFP version.")
         return id_array
 
     def hold_in_reset(self):

@@ -48,4 +48,22 @@ DEVICE_INFO = {
     'icd_read_size_words': 1,
     'icd_chiperase_effect': ChiperaseEffect.NOT_ERASED,
     'icd_isolated_erase': True,
+
+    # DIA
+    'dia_address_word': 0x8100,
+    'dia_size_words': 27,
+    'dia_page_size_words': 1,
+    'dia_write_size_words': 0,
+    'dia_read_size_words': 1,
+    'dia_chiperase_effect': ChiperaseEffect.NOT_ERASED,
+    'dia_isolated_erase': False,
+
+    # DCI
+    'dci_address_word': 0x8200,
+    'dci_size_words': 5,
+    'dci_page_size_words': 1,
+    'dci_write_size_words': 0,
+    'dci_read_size_words': 1,
+    'dci_chiperase_effect': ChiperaseEffect.NOT_ERASED,
+    'dci_isolated_erase': False,
 }

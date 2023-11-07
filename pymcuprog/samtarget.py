@@ -7,8 +7,11 @@ import time
 from logging import getLogger
 
 from pyedbglib.protocols.cmsisdap import CmsisDapSamDebugger
+from pyedbglib.protocols import housekeepingprotocol
 
-from .pymcuprog_errors import PymcuprogError
+from .pymcuprog_errors import PymcuprogError, PymcuprogTargetVoltageError
+
+from .utils import read_target_voltage
 
 class SamTarget:
     """
@@ -17,6 +20,16 @@ class SamTarget:
     def __init__(self, driver):
         self.debugger = CmsisDapSamDebugger(driver)
         self.logger = getLogger(__name__)
+
+        # Check that the target voltage is above the absolute minimum, since this is not handled in the DAP protocol
+        # Note: this limit is a 'global minimum' primarily to catch the 'not connected' and 'not powered' states
+        V_MIN = 1.65
+        housekeeper = housekeepingprotocol.Jtagice3HousekeepingProtocol(self.debugger.transport)
+        target_voltage = read_target_voltage(housekeeper)
+        self.logger.info("Target voltage read out: %.02fV", target_voltage)
+        if target_voltage < V_MIN:
+            raise PymcuprogTargetVoltageError("Operating voltage of {0:.02f}V is too low (absolute minimum {1:.02f}V)"
+                .format(target_voltage, V_MIN))
 
     def read_idcode(self):
         """
@@ -197,9 +210,10 @@ class SamD2xTarget(SamTarget):
         """
         Checks if the device is locked
         """
-        self.logger.info("Is device locked?")
+        self.logger.debug("Is device locked?")
         locked = self.debugger.read_word(self.DSU_ADDRESS + self.DSU_EXTERNAL_OFFSET + self.DSU_CTRL_OFFSET)
         if locked & self.DSU_CTRL_STATUS_PROT_MASK:
+            self.logger.debug("Device is locked")
             return True
         return False
 

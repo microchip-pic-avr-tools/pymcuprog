@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.16] - November 2023
+
+### Added
+- DSG-6057 Added support for BOOT_ROW memtype
+- DSG-6631 Added serialupdi support for P:4 and P:5
+- DSG-6213 Added AVR EB
+
+### Changed
+- DSG-5887 Refactor serialupdi NVM variants
+- DSG-6210 Made serialupdi logging more concise
+- DSG-6533 Help tweaks
+
+### Fixed
+- DSG-5817 Improved error handling with SAM devices
+- DSG-6409 Error return code when --verify fails
+- DSG-6590 Corrected AVR Ex to use 24-bit addressing for serialupdi
+
 ## [3.14] - October 2022
 
 ### Added

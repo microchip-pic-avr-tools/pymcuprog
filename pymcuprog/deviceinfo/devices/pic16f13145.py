@@ -1,17 +1,17 @@
 """
-Required device info for the PIC16F17146 devices
+Required device info for the PIC16F13145 devices
 """
 from pymcuprog.deviceinfo.eraseflags import ChiperaseEffect
 
 DEVICE_INFO = {
-    'name': 'pic16f17146',
+    'name': 'pic16f13145',
     'architecture': 'PIC16',
-    'device_id': 0x30E1,
+    'device_id': 0x3129,
     # This device does not use an address as parameter for the bulk erase
 
     # Flash
     'flash_address_word': 0,
-    'flash_size_words': 16*1024,
+    'flash_size_words': 8*1024,
     'flash_page_size_words': 32,
     'flash_write_size_words': 1,
     'flash_read_size_words': 1,
@@ -35,15 +35,6 @@ DEVICE_INFO = {
     'config_words_read_size_words': 1,
     'config_words_chiperase_effect': ChiperaseEffect.ALWAYS_ERASED,
     'config_words_isolated_erase': False,
-
-    # EEPROM
-    'eeprom_address_word': 0xF000,
-    'eeprom_size_bytes': 256,
-    'eeprom_page_size_bytes': 1,
-    'eeprom_write_size_bytes': 1,
-    'eeprom_read_size_bytes': 1,
-    'eeprom_chiperase_effect': ChiperaseEffect.ALWAYS_ERASED,
-    'eeprom_isolated_erase': False,
 
     # ICD
     'icd_address_word': 0x8600,
@@ -73,6 +64,3 @@ DEVICE_INFO = {
     'dci_isolated_erase': False,
 
 }
-
-
-

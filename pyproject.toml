@@ -1,0 +1,5 @@
+# Note project parameters are given in the setup.cfg file to support older setuptools versions ( < 61.0.0 ) with no PEP 621 support
+[build-system]
+# python 2.7 can't go higher than setuptools major version 44
+requires = ["setuptools>=44.1.1", "wheel"]
+build-backend = "setuptools.build_meta"

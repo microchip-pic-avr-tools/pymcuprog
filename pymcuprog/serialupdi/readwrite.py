@@ -2,7 +2,7 @@
 Read/write access provider for UPDI
 """
 from logging import getLogger
-from pymcuprog.pymcuprog_errors import PymcuprogError
+from pymcuprog.pymcuprog_errors import PymcuprogSerialUpdiProtocolError
 from . import constants
 
 
@@ -21,7 +21,9 @@ class UpdiReadWrite(object):
         Read from Control/Status space
 
         :param address: address (index) to read
+        :type address: int
         :return: value read
+        :rtype: byte
         """
         return self.datalink.ldcs(address)
 
@@ -30,7 +32,9 @@ class UpdiReadWrite(object):
         Write to Control/Status space
 
         :param address: address (index) to write
+        :type address: int
         :param value: 8-bit value to write
+        :type value: byte
         """
         return self.datalink.stcs(address, value)
 
@@ -39,7 +43,9 @@ class UpdiReadWrite(object):
         Write a KEY into UPDI
 
         :param size: size of key to send
+        :type size: int
         :param key: key value
+        :type: key bytearray
         """
         return self.datalink.key(size, key)
 
@@ -47,7 +53,8 @@ class UpdiReadWrite(object):
         """
         Read the SIB from UPDI
 
-        :return: SIB string (bytearray) read
+        :return: SIB string read
+        :rtype: bytearray
         """
         return self.datalink.read_sib()
 
@@ -56,7 +63,9 @@ class UpdiReadWrite(object):
         Read a single byte from UPDI
 
         :param address: address to read from
+        :type address: int
         :return: value read
+        :rtype: byte
         """
         return self.datalink.ld(address)
 
@@ -65,7 +74,9 @@ class UpdiReadWrite(object):
         Writes a single byte to UPDI
 
         :param address: address to write to
+        :type address: int
         :param value: value to write
+        :type value: byte
         """
         return self.datalink.st(address, value)
 
@@ -74,12 +85,14 @@ class UpdiReadWrite(object):
         Reads a number of bytes of data from UPDI
 
         :param address: address to write to
+        :type address: int
         :param size: number of bytes to read
+        :type size: int
         """
         self.logger.debug("Reading %d bytes from 0x%04X", size, address)
         # Range check
         if size > constants.UPDI_MAX_REPEAT_SIZE:
-            raise PymcuprogError("Cant read that many bytes in one go")
+            raise PymcuprogSerialUpdiProtocolError("UPDI cannot read {} bytes in one go".format(size))
 
         # Store the address
         self.datalink.st_ptr(address)
@@ -96,13 +109,15 @@ class UpdiReadWrite(object):
         Reads a number of words of data from UPDI
 
         :param address: address to write to
+        :type address: int
         :param words: number of words to read
+        :type words: int
         """
         self.logger.debug("Reading %d words from 0x%04X", words, address)
 
         # Range check
         if words > constants.UPDI_MAX_REPEAT_SIZE >> 1:
-            raise PymcuprogError("Cant read that many words in one go")
+            raise PymcuprogSerialUpdiProtocolError("UPDI cannot read {} words in one go".format(words))
 
         # Store the address
         self.datalink.st_ptr(address)
@@ -119,22 +134,25 @@ class UpdiReadWrite(object):
         Writes a number of words to memory
 
         :param address: address to write to
+        :type address: int
         :param data: data to write
+        :type data: list of bytes
         """
+        numbytes = len(data)
         # Special-case of 1 word
-        if len(data) == 2:
+        if numbytes == 2:
             value = data[0] + (data[1] << 8)
             return self.datalink.st16(address, value)
 
         # Range check
-        if len(data) > constants.UPDI_MAX_REPEAT_SIZE << 1:
-            raise PymcuprogError("Invalid length")
+        if numbytes > constants.UPDI_MAX_REPEAT_SIZE << 1:
+            raise PymcuprogSerialUpdiProtocolError("UPDI cannot write {} bytes in one go".format(numbytes))
 
         # Store the address
         self.datalink.st_ptr(address)
 
         # Fire up the repeat
-        self.datalink.repeat(len(data) >> 1)
+        self.datalink.repeat(numbytes >> 1)
         return self.datalink.st_ptr_inc16(data)
 
     def write_data(self, address, data):
@@ -142,23 +160,26 @@ class UpdiReadWrite(object):
         Writes a number of bytes to memory
 
         :param address: address to write to
+        :type address: int
         :param data: data to write
+        :type data: list of bytes
         """
+        numbytes = len(data)
         # Special case of 1 byte
-        if len(data) == 1:
+        if numbytes == 1:
             return self.datalink.st(address, data[0])
         # Special case of 2 byte
-        if len(data) == 2:
+        if numbytes == 2:
             self.datalink.st(address, data[0])
             return self.datalink.st(address + 1, data[1])
 
         # Range check
-        if len(data) > constants.UPDI_MAX_REPEAT_SIZE:
-            raise PymcuprogError("Invalid length")
+        if numbytes > constants.UPDI_MAX_REPEAT_SIZE:
+            raise PymcuprogSerialUpdiProtocolError("UPDI cannot write {} bytes in one go".format(numbytes))
 
         # Store the address
         self.datalink.st_ptr(address)
 
         # Fire up the repeat
-        self.datalink.repeat(len(data))
+        self.datalink.repeat(numbytes)
         return self.datalink.st_ptr_inc(data)

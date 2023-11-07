@@ -22,7 +22,7 @@ DEVICE_INFO = {
 
     # ICD memory
     'icd_address_byte': 0x800000 * 2,
-    'icd_size_bytes': 512 * 4,  # 2KiB
+    'icd_size_bytes': 512 * 16,  # 8KiB
     'icd_page_size_bytes': 8,
     'icd_write_size_bytes': 8,
     'icd_read_size_bytes': 16,

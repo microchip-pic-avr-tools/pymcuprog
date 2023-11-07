@@ -3,7 +3,7 @@ Link layer in UPDI protocol stack
 """
 from logging import getLogger
 
-from pymcuprog.pymcuprog_errors import PymcuprogError
+from pymcuprog.pymcuprog_errors import PymcuprogSerialUpdiError, PymcuprogSerialUpdiProtocolError
 from . import constants
 
 
@@ -21,6 +21,9 @@ class UpdiDatalink:
     def set_physical(self, physical):
         """
         Inject a serial-port based physical layer for use by this DL
+
+        :param physical: physical object to use
+        :type physical: UpdiPhysical
         """
         self.updi_phy = physical
 
@@ -49,6 +52,8 @@ class UpdiDatalink:
     def init_datalink(self):
         """
         Init DL layer
+
+        :raises: PymcuprogSerialUpdiError if initialization fails
         """
         self._init_session_parameters()
         # Check
@@ -57,17 +62,20 @@ class UpdiDatalink:
             self.updi_phy.send_double_break()
             self._init_session_parameters()
             if not self._check_datalink():
-                raise PymcuprogError("UPDI initialisation failed")
+                raise PymcuprogSerialUpdiError("UPDI initialisation failed")
 
     def _check_datalink(self):
         """
         Check UPDI by loading CS STATUSA
+
+        :returns: True if OK, False otherwise
+        :rtype: bool
         """
         try:
             if self.ldcs(constants.UPDI_CS_STATUSA) != 0:
                 self.logger.info("UPDI init OK")
                 return True
-        except PymcuprogError:
+        except PymcuprogSerialUpdiError:
             self.logger.info("UPDI datalink check failed")
             return False
         self.logger.info("UPDI not OK - reinitialisation required")
@@ -78,14 +86,15 @@ class UpdiDatalink:
         Load data from Control/Status space
 
         :param address: address to load
+        :type address: int
         """
         self.logger.debug("LDCS from 0x%02X", address)
         self.updi_phy.send([constants.UPDI_PHY_SYNC, constants.UPDI_LDCS | (address & 0x0F)])
         response = self.updi_phy.receive(self.LDCS_RESPONSE_BYTES)
         numbytes_received = len(response)
         if numbytes_received != self.LDCS_RESPONSE_BYTES:
-            raise PymcuprogError("Unexpected number of bytes in response: "
-                                 "{} byte(s) expected {} byte(s)".format(numbytes_received, self.LDCS_RESPONSE_BYTES))
+            raise PymcuprogSerialUpdiProtocolError("Unexpected number of bytes in response: "
+                                 "{} byte(s), expected {} byte(s)".format(numbytes_received, self.LDCS_RESPONSE_BYTES))
 
         return response[0]
 
@@ -94,7 +103,9 @@ class UpdiDatalink:
         Store a value to Control/Status space
 
         :param address: address to store to
+        :type address: int
         :param value: value to write
+        :type value: byte
         """
         self.logger.debug("STCS to 0x%02X", address)
         self.updi_phy.send([constants.UPDI_PHY_SYNC, constants.UPDI_STCS | (address & 0x0F), value])
@@ -102,9 +113,11 @@ class UpdiDatalink:
     def ld_ptr_inc(self, size):
         """
         Loads a number of bytes from the pointer location with pointer post-increment
- 
+
         :param size: number of bytes to load
+        :type size: int
         :return: values read
+        :rtype: list of bytes
         """
         self.logger.debug("LD8 from ptr++")
         self.updi_phy.send([constants.UPDI_PHY_SYNC, constants.UPDI_LD | constants.UPDI_PTR_INC |
@@ -116,7 +129,9 @@ class UpdiDatalink:
         Load a 16-bit word value from the pointer location with pointer post-increment
 
         :param words: number of words to load
+        :type words: int
         :return: values read
+        :rtype: list of bytes
         """
         self.logger.debug("LD16 from ptr++")
         self.updi_phy.send([constants.UPDI_PHY_SYNC, constants.UPDI_LD | constants.UPDI_PTR_INC |
@@ -128,6 +143,7 @@ class UpdiDatalink:
         Store data to the pointer location with pointer post-increment
 
         :param data: data to store
+        :type data: list of bytes
         """
         self.logger.debug("ST8 to *ptr++")
         self.updi_phy.send([constants.UPDI_PHY_SYNC, constants.UPDI_ST | constants.UPDI_PTR_INC | constants.UPDI_DATA_8,
@@ -135,7 +151,7 @@ class UpdiDatalink:
         response = self.updi_phy.receive(1)
 
         if len(response) != 1 or response[0] != constants.UPDI_PHY_ACK:
-            raise PymcuprogError("ACK error with st_ptr_inc")
+            raise PymcuprogSerialUpdiProtocolError("ACK error with st_ptr_inc")
 
         num = 1
         while num < len(data):
@@ -143,15 +159,16 @@ class UpdiDatalink:
             response = self.updi_phy.receive(1)
 
             if len(response) != 1 or response[0] != constants.UPDI_PHY_ACK:
-                raise PymcuprogError("Error with st_ptr_inc")
+                raise PymcuprogSerialUpdiProtocolError("Error with st_ptr_inc")
             num += 1
 
     def st_ptr_inc16(self, data):
         """
-        Store a 16-bit word value to the pointer location with pointer post-increment
+        Store a 16-bit word value to the pointer location with pointer post-increment.
         ACK is disabled for blocks (> 2 bytes)
 
         :param data: data to store
+        :type data: list of bytes
         """
         self.logger.debug("ST16 to *ptr++")
         if len(data) == 2:
@@ -162,7 +179,7 @@ class UpdiDatalink:
             response = self.updi_phy.receive(1)
 
             if len(response) != 1 or response[0] != constants.UPDI_PHY_ACK:
-                raise PymcuprogError("ACK error with st_ptr_inc16")
+                raise PymcuprogSerialUpdiProtocolError("ACK error with st_ptr_inc16")
         else:
             self.logger.debug("ACKless block write")
             self._disable_ack()
@@ -171,17 +188,18 @@ class UpdiDatalink:
             # Send data with no ACK (Response Signature)
             self.updi_phy.send(data)
             self._enable_ack()
- 
+
     def repeat(self, repeats):
         """
         Store a value to the repeat counter
 
         :param repeats: number of repeats requested
+        :type repeats: int
         """
         self.logger.debug("Repeat %d", repeats)
         if (repeats - 1) > constants.UPDI_MAX_REPEAT_SIZE:
             self.logger.error("Invalid repeat count of %d", repeats)
-            raise Exception("Invalid repeat count!")
+            raise PymcuprogSerialUpdiProtocolError("Invalid repeat count!")
         repeats -= 1
         self.updi_phy.send([constants.UPDI_PHY_SYNC, constants.UPDI_REPEAT | constants.UPDI_REPEAT_BYTE,
                             repeats & 0xFF])
@@ -189,19 +207,24 @@ class UpdiDatalink:
     def read_sib(self):
         """
         Read the SIB
+
+        :returns: SIB string
+        :rtype: bytearray
         """
         return self.updi_phy.sib()
 
     def key(self, size, key):
         """
         Write a key
- 
+
         :param size: size of key (0=64B, 1=128B, 2=256B)
+        :type size: int
         :param key: key value
+        :type key: list of bytes
         """
         self.logger.debug("Writing key")
         if len(key) != 8 << size:
-            raise PymcuprogError("Invalid KEY length!")
+            raise PymcuprogSerialUpdiProtocolError("Invalid KEY length!")
         self.updi_phy.send([constants.UPDI_PHY_SYNC, constants.UPDI_KEY | constants.UPDI_KEY_KEY | size])
         self.updi_phy.send(list(reversed(list(key))))
 
@@ -211,22 +234,23 @@ class UpdiDatalink:
         * receive ACK
         * send data
 
-        :param values: bytearray of value(s) to send
+        :param values: value(s) to send
+        :type values: list of bytes
         """
         response = self.updi_phy.receive(1)
         if len(response) != 1 or response[0] != constants.UPDI_PHY_ACK:
-            raise PymcuprogError("Error with st")
+            raise PymcuprogSerialUpdiProtocolError("Error with st")
 
         self.updi_phy.send(values)
         response = self.updi_phy.receive(1)
         if len(response) != 1 or response[0] != constants.UPDI_PHY_ACK:
-            raise PymcuprogError("Error with st")
+            raise PymcuprogSerialUpdiProtocolError("Error with st")
 
 
 class UpdiDatalink16bit(UpdiDatalink):
     """
-    UPDI data link layer in 16-bit version
-    This means that all addresses and pointers contain 2 bytes
+    UPDI data link layer in 16-bit version.
+    This means that all addresses and pointers contain 2 bytes.
     """
 
     def __init__(self):
@@ -239,9 +263,11 @@ class UpdiDatalink16bit(UpdiDatalink):
         Load a single byte direct from a 16-bit address
 
         :param address: address to load from
+        :type address: int
         :return: value read
+        :rtype: bytes
         """
-        self.logger.info("LD from 0x{0:06X}".format(address))
+        self.logger.debug("LD from 0x%06X", address)
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_LDS | constants.UPDI_ADDRESS_16 | constants.UPDI_DATA_8,
              address & 0xFF, (address >> 8) & 0xFF])
@@ -252,9 +278,11 @@ class UpdiDatalink16bit(UpdiDatalink):
         Load a 16-bit word directly from a 16-bit address
 
         :param address: address to load from
+        :type address: int
         :return: values read
+        :rtype: list of bytes
         """
-        self.logger.info("LD from 0x{0:06X}".format(address))
+        self.logger.debug("LD from 0x%06X", address)
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_LDS | constants.UPDI_ADDRESS_16 | constants.UPDI_DATA_16,
              address & 0xFF, (address >> 8) & 0xFF])
@@ -266,9 +294,11 @@ class UpdiDatalink16bit(UpdiDatalink):
         Store a single byte value directly to a 16-bit address
 
         :param address: address to write to
+        :type address: int
         :param value: value to write
+        :type value: byte
         """
-        self.logger.info("ST to 0x{0:06X}".format(address))
+        self.logger.debug("ST to 0x%06X", address)
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_STS | constants.UPDI_ADDRESS_16 | constants.UPDI_DATA_8,
              address & 0xFF, (address >> 8) & 0xFF])
@@ -279,9 +309,11 @@ class UpdiDatalink16bit(UpdiDatalink):
         Store a 16-bit word value directly to a 16-bit address
 
         :param address: address to write to
+        :type address: int
         :param value: value to write
+        :type value: byte
         """
-        self.logger.info("ST to 0x{0:06X}".format(address))
+        self.logger.debug("ST to 0x%06X", address)
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_STS | constants.UPDI_ADDRESS_16 | constants.UPDI_DATA_16,
              address & 0xFF, (address >> 8) & 0xFF])
@@ -292,19 +324,20 @@ class UpdiDatalink16bit(UpdiDatalink):
         Set the pointer location
 
         :param address: address to write
+        :type address: int
         """
-        self.logger.info("ST to ptr")
+        self.logger.debug("ST to ptr")
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_ST | constants.UPDI_PTR_ADDRESS | constants.UPDI_DATA_16,
              address & 0xFF, (address >> 8) & 0xFF])
         response = self.updi_phy.receive(1)
         if len(response) != 1 or response[0] != constants.UPDI_PHY_ACK:
-            raise PymcuprogError("Error with st_ptr")
+            raise PymcuprogSerialUpdiProtocolError("Error with st_ptr")
 
 
 class UpdiDatalink24bit(UpdiDatalink):
     """
-    UPDI data link layer in 24-bit version
+    UPDI data link layer in 24-bit version.
     This means that all addresses and pointers contain 3 bytes
     """
 
@@ -318,9 +351,11 @@ class UpdiDatalink24bit(UpdiDatalink):
         Load a single byte direct from a 24-bit address
 
         :param address: address to load from
+        :type address: int
         :return: value read
+        :rtype: bytes
         """
-        self.logger.info("LD from 0x{0:06X}".format(address))
+        self.logger.debug("LD from 0x%06X", address)
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_LDS | constants.UPDI_ADDRESS_24 | constants.UPDI_DATA_8,
              address & 0xFF, (address >> 8) & 0xFF, (address >> 16) & 0xFF])
@@ -331,9 +366,11 @@ class UpdiDatalink24bit(UpdiDatalink):
         Load a 16-bit word directly from a 24-bit address
 
         :param address: address to load from
+        :type address: int
         :return: values read
+        :rtype: list of bytes
         """
-        self.logger.info("LD from 0x{0:06X}".format(address))
+        self.logger.debug("LD from 0x%06X", address)
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_LDS | constants.UPDI_ADDRESS_24 | constants.UPDI_DATA_16,
              address & 0xFF, (address >> 8) & 0xFF, (address >> 16) & 0xFF])
@@ -345,9 +382,11 @@ class UpdiDatalink24bit(UpdiDatalink):
         Store a single byte value directly to a 24-bit address
 
         :param address: address to write to
+        :type address: int
         :param value: value to write
+        :type value: byte
         """
-        self.logger.info("ST to 0x{0:06X}".format(address))
+        self.logger.debug("ST to 0x%06X", address)
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_STS | constants.UPDI_ADDRESS_24 | constants.UPDI_DATA_8,
              address & 0xFF, (address >> 8) & 0xFF, (address >> 16) & 0xFF])
@@ -358,9 +397,11 @@ class UpdiDatalink24bit(UpdiDatalink):
         Store a 16-bit word value directly to a 24-bit address
 
         :param address: address to write to
+        :type address: int
         :param value: value to write
+        :type value: byte
         """
-        self.logger.info("ST to 0x{0:06X}".format(address))
+        self.logger.debug("ST to 0x%06X", address)
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_STS | constants.UPDI_ADDRESS_24 | constants.UPDI_DATA_16,
              address & 0xFF, (address >> 8) & 0xFF, (address >> 16) & 0xFF])
@@ -371,11 +412,12 @@ class UpdiDatalink24bit(UpdiDatalink):
         Set the pointer location
 
         :param address: address to write
+        :type address: int
         """
-        self.logger.info("ST to ptr")
+        self.logger.debug("ST to ptr")
         self.updi_phy.send(
             [constants.UPDI_PHY_SYNC, constants.UPDI_ST | constants.UPDI_PTR_ADDRESS | constants.UPDI_DATA_24,
              address & 0xFF, (address >> 8) & 0xFF, (address >> 16) & 0xFF])
         response = self.updi_phy.receive(1)
         if len(response) != 1 or response[0] != constants.UPDI_PHY_ACK:
-            raise PymcuprogError("Error with st_ptr")
+            raise PymcuprogSerialUpdiProtocolError("Error with st_ptr")

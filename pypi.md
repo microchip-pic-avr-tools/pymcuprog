@@ -7,7 +7,6 @@ pymcuprog is available:
 * install using pip from pypi: https://pypi.org/project/pymcuprog
 * browse source code on github: https://github.com/microchip-pic-avr-tools/pymcuprog
 * read API documentation on github: https://microchip-pic-avr-tools.github.io/pymcuprog
-* read the changelog on github: https://github.com/microchip-pic-avr-tools/pymcuprog/blob/main/CHANGELOG.md
 
 ## Usage
 pymcuprog can be used as a command-line interface or a library
@@ -227,7 +226,7 @@ pymcuprog -V
 
 or using the library:
 ```python
-from pymcuprog.version import VERSION as pymcuprog_version
+from pymcuprog import __version__ as pymcuprog_version
 print("pymcuprog version {}".format(pymcuprog_version))
 ```
 

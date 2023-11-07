@@ -109,7 +109,7 @@ class ConfigGenerator(object):
                 self.pic.write_config_byte(byte_address=ParametricValueToken(ParametricValueToken.TOKEN_ADDRESS_LE32),
                                            data=bytearray(config_words_write_size))
             elif config_words_write_size == 2:
-                self.pic.write_config_byte(byte_address=ParametricValueToken(ParametricValueToken.TOKEN_ADDRESS_LE32),
+                self.pic.write_config_word(byte_address=ParametricValueToken(ParametricValueToken.TOKEN_ADDRESS_LE32),
                                            data=bytearray(config_words_write_size))
             else:
                 raise ValueError("config_words_write_size must either be 1 or 2; {} is not supported".format(config_words_write_size))
@@ -118,9 +118,13 @@ class ConfigGenerator(object):
 
             eeprom_info = self.device_memory_info.memory_info_by_name(MemoryNames.EEPROM)
             eeprom_write_size = eeprom_info[DeviceMemoryInfoKeys.WRITE_SIZE]
-            # Multiply EEPROM write size by 2, since config has to always deal with phantom bytes which are in the hex files
-            self.pic.write_eeprom_block(byte_address=ParametricValueToken(ParametricValueToken.TOKEN_ADDRESS_LE32),
-                                         data=bytearray(eeprom_write_size * 2))
+            if "PIC16" in self.pic.device_name.upper():
+                # Multiply EEPROM write size by 2, since config has to always deal with phantom bytes which are in the hex files (for PIC16 devices)
+                self.pic.write_eeprom_block(byte_address=ParametricValueToken(ParametricValueToken.TOKEN_ADDRESS_LE32),
+                                            data=bytearray(eeprom_write_size * 2))
+            else:
+                self.pic.write_eeprom_block(byte_address=ParametricValueToken(ParametricValueToken.TOKEN_ADDRESS_LE32),
+                                            data=bytearray(eeprom_write_size))
 
         # User IDs
         if MemoryNames.USER_ID in self.device_memory_info.mem_by_name:
@@ -191,8 +195,8 @@ class ConfigGenerator(object):
         # These values are hardcoded, and thus need to be updated when the spec updates :/
         # It would be nice to fetch them from somewhere...
         deviceconf.append(self._add_register("DEVICE_CONFIG_MAJOR", "1"))
-        deviceconf.append(self._add_register("DEVICE_CONFIG_MINOR", "8"))
-        deviceconf.append(self._add_register("DEVICE_CONFIG_BUILD", "60"))
+        deviceconf.append(self._add_register("DEVICE_CONFIG_MINOR", "10"))
+        deviceconf.append(self._add_register("DEVICE_CONFIG_BUILD", "4"))
         # Not used yet:
         deviceconf.append(self._add_register("CONTENT_LENGTH", "0"))
         deviceconf.append(self._add_register("CONTENT_CHECKSUM", "0"))
@@ -230,8 +234,11 @@ class ConfigGenerator(object):
             eeprom_info = self.device_memory_info.memory_info_by_name(MemoryNames.EEPROM)
             eeprom_base_w = eeprom_info['address']//2
             eeprom_size_b = eeprom_info['size']
-            # Multiply EEPROM write size by 2, since config has to always deal with phantom bytes which are in the hex files
-            eeprom_write_block_b = eeprom_info['write_size'] * 2
+            if "PIC16" in self.pic.device_name.upper():
+                # Multiply EEPROM write size by 2, since config has to always deal with phantom bytes which are in the hex files (for PIC16 devices)
+                eeprom_write_block_b = eeprom_info['write_size'] * 2
+            else:
+                eeprom_write_block_b = eeprom_info['write_size']
         else:
             # Some devices do not have EEPROM memory, but it is good to warn the user if it is missing in case it
             # was just forgotten when making the device model file
@@ -258,6 +265,11 @@ class ConfigGenerator(object):
         entry.append(self._add_data("PIC_USER_ID_WRITE_BLOCK_B", "{}".format(user_id_info['write_size'])))
         entry.append(self._add_data("PIC_CONFIG_WRITE_BLOCK_B", "{}".format(config_word_info['write_size'])))
         entry.append(self._add_data("PIC_DEVICE_ID", "0x{0:04X}".format(device_info['device_id'])))
+        comment = ETree.Comment("Mask for config bytes. Bit n: 0->allow config byte offset n write, 1->block config byte offset n write.")
+        entry.append(comment)
+        # Default generated mask allows writing all config words
+        default_config_word_mask = ((0xFFFFFFFE << (config_word_info['size']-1)) & 0xFFFFFFFF)
+        entry.append(self._add_data("PIC_CONFIG_PROTECTION_MASK", "0x{0:08X}".format(default_config_word_mask)))
         return entry
 
     def get_xml_string(self):

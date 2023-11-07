@@ -220,6 +220,13 @@ class Programmer:
         # Read back and compare the data to verify
         data_verify = self.read_memory(memory_name, offset, len(data))[0].data
 
+        # Pad the data blocks to match the size of the verify mask
+        if len(data_verify) % len(verify_mask):
+            extra = len(verify_mask) - len(data_verify) % len(verify_mask)
+            self.logger.debug("Padding verification data with %s * [0xFF]", extra)
+            data.extend([0xFF]*extra)
+            data_verify.extend([0xFF]*extra)
+
         self.logger.info("Verifying...")
         try:
             # Use the compare util, which throws ValueError on mismatch

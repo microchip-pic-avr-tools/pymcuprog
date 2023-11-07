@@ -77,3 +77,58 @@ class PymcuprogEraseError(PymcuprogError):
     def __init__(self, msg=None, code=0):
         super(PymcuprogEraseError, self).__init__(msg)
         self.code = code
+
+class PymcuprogTargetVoltageError(PymcuprogError):
+    """
+    Signals that the target voltage is out of spec
+    """
+
+    def __init__(self, msg=None, code=0):
+        super(PymcuprogTargetVoltageError, self).__init__(msg)
+        self.code = code
+
+class PymcuprogSerialUpdiError(PymcuprogError):
+    """
+    Error class for SerialUPDI (pyupdi)
+    """
+
+    def __init__(self, msg=None, code=0):
+        super(PymcuprogSerialUpdiError, self).__init__(msg)
+        self.code = code
+
+class PymcuprogSerialUpdiLockedError(PymcuprogSerialUpdiError):
+    """
+    The device is locked
+    """
+
+    def __init__(self, msg=None, code=0):
+        super(PymcuprogSerialUpdiLockedError, self).__init__(msg)
+        self.code = code
+
+
+class PymcuprogSerialUpdiNvmError(PymcuprogSerialUpdiError):
+    """
+    An NVM CTRL error condition occurred
+    """
+
+    def __init__(self, msg=None, code=0):
+        super(PymcuprogSerialUpdiNvmError, self).__init__(msg)
+        self.code = code
+
+class PymcuprogSerialUpdiNvmTimeout(PymcuprogSerialUpdiError):
+    """
+    A timeout occurred waiting for NVM to be ready
+    """
+
+    def __init__(self, msg=None, code=0):
+        super(PymcuprogSerialUpdiNvmTimeout, self).__init__(msg)
+        self.code = code
+
+class PymcuprogSerialUpdiProtocolError(PymcuprogSerialUpdiError):
+    """
+    An UPDI protocol error occurred.  This usually indicates an error in the code.
+    """
+
+    def __init__(self, msg=None, code=0):
+        super(PymcuprogSerialUpdiProtocolError, self).__init__(msg)
+        self.code = code
