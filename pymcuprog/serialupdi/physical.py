@@ -4,6 +4,7 @@ Serial driver for UPDI stack
 import time
 from logging import getLogger
 import serial
+import serial.rfc2217
 from serial.serialutil import SerialException
 
 from . import constants
@@ -48,6 +49,20 @@ class UpdiPhysical:
         # send an initial break as handshake
         self.send([constants.UPDI_BREAK])
 
+    def _open_serial(self, port, *args, **kwargs):
+        """
+        Open a serial device (tty/com or rfc2217) based on the provided port type
+
+        :param port: Serial port name to connect to.
+        :param \**args: Additional arguments passed to Serial class.
+        :param \**args: Additional keyword arguments passed to Serial class.
+        """
+
+        if port.startswith("rfc2217://"):
+            return serial.rfc2217.Serial(port, *args, **kwargs)
+        else:
+            return serial.Serial(port, *args, **kwargs)
+
     def initialise_serial(self, port, baud, timeout):
         """
         Standard serial port initialisation
@@ -62,7 +77,7 @@ class UpdiPhysical:
         """
         self.logger.info("Opening port '%s' at %d baud (timeout %.01fs)", port, baud, timeout)
         try:
-            self.ser = serial.Serial(port, baud, parity=serial.PARITY_EVEN, timeout=timeout, stopbits=serial.STOPBITS_TWO)
+            self.ser = self._open_serial(port, baud, parity=serial.PARITY_EVEN, timeout=timeout, stopbits=serial.STOPBITS_TWO)
         except SerialException:
             self.logger.error("Unable to open serial port '%s'", port)
             raise
@@ -90,7 +105,7 @@ class UpdiPhysical:
         # At 300 bauds, the break character will pull the line low for 30ms
         # Which is slightly above the recommended 24.6ms
         self.ser.close()
-        temporary_serial = serial.Serial(self.port, 300, parity=serial.PARITY_EVEN, timeout=self.timeout,
+        temporary_serial = self._open_serial(self.port, 300, parity=serial.PARITY_EVEN, timeout=self.timeout,
                                          stopbits=serial.STOPBITS_ONE)
 
         # Send two break characters, with 1 stop bit in between
