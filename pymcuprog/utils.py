@@ -189,8 +189,8 @@ def showdata(data, address=0, page_size=None, line_wrap=16, phantom_bytes=0):
     if word_index:
         address += (1 + phantom_bytes) - word_index
 
-    # Cannot print more per line than the page size
-    if page_size is not None:
+    # Cannot print more per line than the page size (page size <= 2 is interpreted as no paging)
+    if page_size is not None and page_size > 2:
         if line_wrap > page_size:
             line_wrap = page_size
 
@@ -198,7 +198,9 @@ def showdata(data, address=0, page_size=None, line_wrap=16, phantom_bytes=0):
 
     # Page alignment
     rows = 0
-    if page_size is not None:
+
+    # page size <= 2 is interpreted as no paging
+    if page_size is not None and page_size > 2:
         page = address % page_size
         rows = int(page / line_wrap)
         for row in range(rows):
@@ -224,7 +226,8 @@ def showdata(data, address=0, page_size=None, line_wrap=16, phantom_bytes=0):
         for i in range(phantom_bytes):
             print("xx ", end='')
         print_index += 1 + phantom_bytes
-        if page_size is not None:
+        # page size <= 2 is interpreted as no paging
+        if page_size is not None and page_size > 2:
             if (print_index+(rows*line_wrap)) % page_size == 0 and data_index != len(data)+div:
                 print("")
                 wrap = True
@@ -268,7 +271,7 @@ def pad_to_size(memory_block, chunk_size, pad_value):
 
     while len(memory_block) % chunk_size > 0:
         memory_block.append(pad_value)
-    
+
     return memory_block
 
 

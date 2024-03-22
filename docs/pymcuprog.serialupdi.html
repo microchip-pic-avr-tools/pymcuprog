@@ -1693,7 +1693,7 @@ By default word access is used (required for flash)</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pymcuprog.serialupdi.nvmp3.NvmUpdiP3.write_nvm">
-<span class="sig-name descname"><span class="pre">write_nvm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_word_access</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvmcommand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.write_nvm" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">write_nvm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_word_access</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvmcommand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">erasebuffer_command</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymcuprog.serialupdi.nvmp3.NvmUpdiP3.write_nvm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes a page of data to NVM</p>
 <p>By default the PAGE_WRITE command is used, which requires that the page is already erased.
 By default word access is used (required for flash)</p>
@@ -1704,6 +1704,7 @@ By default word access is used (required for flash)</p>
 <li><p><strong>data</strong> (<em>list</em><em> of </em><em>bytes</em>) – data to write</p></li>
 <li><p><strong>use_word_access</strong> (<em>bool</em><em>, </em><em>defaults to True</em>) – True for 16-bit writes (eg: flash)</p></li>
 <li><p><strong>nvmcommand</strong> (<em>int</em><em>, </em><em>defaults to NVMCMD_PAGE_WRITE</em>) – command to use for commit</p></li>
+<li><p><strong>erasebuffer_command</strong> (<em>int</em><em>, </em><em>defaults to NVMCMD_FLASH_PAGE_BUFFER_CLEAR</em>) – command to use for erasing the page buffer</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1995,7 +1996,7 @@ Makes us of the datalink provided</p>
     </div>
     <div class="footer-wrapper">
         <div class="footer" role="contentinfo">
-            © Copyright 2023, Microchip Technology Inc
+            © Copyright 2024, Microchip Technology Inc
         </div>
     </div>
   </body>

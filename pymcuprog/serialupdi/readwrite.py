@@ -173,13 +173,21 @@ class UpdiReadWrite(object):
             self.datalink.st(address, data[0])
             return self.datalink.st(address + 1, data[1])
 
-        # Range check
-        if numbytes > constants.UPDI_MAX_REPEAT_SIZE:
-            raise PymcuprogSerialUpdiProtocolError("UPDI cannot write {} bytes in one go".format(numbytes))
+        index = 0
+        while numbytes:
+            if numbytes > constants.UPDI_MAX_REPEAT_SIZE:
+                chunk_size = constants.UPDI_MAX_REPEAT_SIZE
+            else:
+                chunk_size = numbytes
 
-        # Store the address
-        self.datalink.st_ptr(address)
+            # Store the address
+            self.datalink.st_ptr(address)
 
-        # Fire up the repeat
-        self.datalink.repeat(numbytes)
-        return self.datalink.st_ptr_inc(data)
+            # Fire up the repeat
+            self.datalink.repeat(chunk_size)
+            self.datalink.st_ptr_inc(data[index:index+chunk_size])
+
+            index += chunk_size
+            address += chunk_size
+            numbytes -= chunk_size
+

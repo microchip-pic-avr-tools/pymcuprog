@@ -66,6 +66,10 @@ Reboot the debugger:
 ```
 reboot-debugger
 ```
+Convert Intel® hex file to UF2 file
+```
+makeuf2
+```
 
 ## Memory types
 Memory types may vary depending on the device in question.
@@ -157,7 +161,7 @@ dci
 -f FILENAME, --filename FILENAME
     file to write / read.
 
-    A specified filename which has .hex extension will be treated as Intel(R) hex
+    A specified filename which has .hex extension will be treated as Intel hex
     format; all other file extensions are treated as binary files.
 
     When writing from a .hex file, the memory segment addresses are read from
@@ -210,6 +214,11 @@ dci
     Execute a Chip Erase on a locked device
 ```
 
+### Utility arguments
+```
+--uf2file UF2FILE
+    Name of UF2 file to generate
+```
 
 # Examples
 Examples of using pymcuprog:
@@ -246,6 +255,9 @@ pymcuprog getvoltage
 
 # Set target supply voltage on a kit (voltage provided by -l literal argument):
 pymcuprog setsupplyvoltage -l 3.3
+
+# Convert Intel hex file to UF2 file (--uf2file argument is optional)
+pymcuprog makeuf2 -f myfile.hex --uf2file newfile.uf2
 ```
 # serialUPDI usage
 SerialUPDI (also known as 'pyupdi') is implemented as a _tool_ in pymcuprog.

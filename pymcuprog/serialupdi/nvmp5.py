@@ -172,7 +172,8 @@ class NvmUpdiP5(NvmUpdi):
         :type data: list of bytes
         """
         return self.write_nvm(address, data, use_word_access=False,
-                              nvmcommand=self.NVMCMD_EEPROM_PAGE_ERASE_WRITE)
+                              nvmcommand=self.NVMCMD_EEPROM_PAGE_ERASE_WRITE,
+                              erasebuffer_command=self.NVMCMD_EEPROM_PAGE_BUFFER_CLEAR)
 
     def write_fuse(self, address, data):
         """
@@ -185,7 +186,12 @@ class NvmUpdiP5(NvmUpdi):
         """
         return self.write_eeprom(address, data)
 
-    def write_nvm(self, address, data, use_word_access, nvmcommand=NVMCMD_FLASH_PAGE_WRITE):
+    def write_nvm(self,
+                  address,
+                  data,
+                  use_word_access,
+                  nvmcommand=NVMCMD_FLASH_PAGE_WRITE,
+                  erasebuffer_command=NVMCMD_FLASH_PAGE_BUFFER_CLEAR):
         """
         Writes a page of data to NVM
 
@@ -200,6 +206,8 @@ class NvmUpdiP5(NvmUpdi):
         :type use_word_access: bool, defaults to True
         :param nvmcommand: command to use for commit
         :type nvmcommand: int, defaults to NVMCMD_PAGE_WRITE
+        :param erasebuffer_command: command to use for erasing the page buffer
+        :type erasebuffer_command: int, defaults to NVMCMD_FLASH_PAGE_BUFFER_CLEAR
         :raises: PymcuprogSerialUpdiNvmTimeout if a timeout occurred
         :raises: PymcuprogSerialUpdiNvmError if an error condition is encountered
         """
@@ -210,7 +218,7 @@ class NvmUpdiP5(NvmUpdi):
 
         # Clear the page buffer
         self.logger.debug("Clear page buffer")
-        self.execute_nvm_command(self.NVMCMD_FLASH_PAGE_BUFFER_CLEAR)
+        self.execute_nvm_command(erasebuffer_command)
 
         # Wait for NVM controller to be ready
         if not self.wait_nvm_ready():

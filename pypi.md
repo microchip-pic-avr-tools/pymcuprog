@@ -39,7 +39,7 @@ writes device memories
 * use -m to specify memory type for literal writing
 * use -o to specify offset for literal writing
 
-Example: writes the content of an Intel(R) hex file to the appropriate memory areas on the device
+Example: writes the content of an Intel® hex file to the appropriate memory areas on the device
 ```bash
 pymcuprog write -f app.hex
 ```
@@ -118,6 +118,20 @@ Example: reboots a Curiosity Nano kit
 pymcuprog reboot-debugger
 ```
 
+### Generic utilities
+
+#### Action: makeuf2
+converts Intel hex file to UF2 file
+* use -f to specify input hex file
+* use --uf2file to specify name of output UF2 file (optional)
+
+Example: converts myfile.hex to newfile.uf2
+```bash
+pymcuprog makeuf2 -f myfile.hex --uf2file newfile.uf2
+```
+The --uf2file argument is optional. By default pymcuprog will generate a UF2 file with the same name as the hex but with .uf2 extension.
+
+
 ### Command-line switches
 Many of these switches are optional, and many parameters are automatically set when using a Curiosity Nano or Xplained Pro kit.
 * -t TOOL to select which tool to use.  Optional if only one is connected.
@@ -137,7 +151,9 @@ Many of these switches are optional, and many parameters are automatically set w
 ####
 *Notes regarding PACKPATH argument
 
-While pymcuprog itself contains sufficient information to program AVR devices (with UPDI interface), it is unable to program a PIC device without access to programming scripts for that device.  These scripts are deployed in Device Family Packs (DFP) on https://packs.download.microchip.com and are only provided for PIC devices mounted on Curiosity Nano boards or other boards with the PKOB nano (nEDBG) debugger.  To use pymcuprog with PIC devices, you will either need to download a DFP for the PIC in question, or have MPLAB X v5.25 or later installed.  In either case the path to the particular device in the scripts folder inside the DFP must be passed into pymcuprog using the -p PACKPATH argument.  Remember to use "<path>" if the path itself contains spaces.
+While pymcuprog itself contains sufficient information to program AVR devices (with UPDI interface), it is unable to program a PIC device without access to programming scripts for that device.  These scripts are deployed in Device Family Packs (DFP) on https://packs.download.microchip.com and are only provided for PIC devices mounted on Curiosity Nano boards or other boards with the PKOB nano (nEDBG) debugger.  To use pymcuprog with PIC devices, you will either need to download a DFP for the PIC in question, or have MPLAB X v5.25 or later installed.  In either case the path to the particular device in the scripts folder inside the DFP must be passed into pymcuprog using the -p PACKPATH argument. Remember to quote the path (`"<path>"`) if the path itself contains spaces.
+
+NOTE FOR WINDOWS USERS: Avoid ending a quoted `"<path>"` argument with a backslash (`'\'`), this will cause the PACKPATH to not be found. `"C:\foo\bar"` will work, while `"C:\foo\bar\"` will not.
 
 Example: Ping the device on a PIC16F15244 Curiosity Nano
 ```bash

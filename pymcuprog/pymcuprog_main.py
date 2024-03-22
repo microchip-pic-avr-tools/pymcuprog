@@ -10,6 +10,8 @@ import os
 from copy import copy
 from logging import getLogger
 
+from pyedbglib.util.hex_to_uf2 import hex_to_uf2
+
 from .backend import Backend, SessionConfig
 from .toolconnection import ToolUsbHidConnection, ToolSerialConnection
 from .deviceinfo.memorynames import MemoryNameAliases, MemoryNames
@@ -47,6 +49,10 @@ def pymcuprog(args):
             print("Build date: {}".format(BUILD_DATE))
             print("Commit ID:  {}".format(COMMIT_ID))
         return STATUS_SUCCESS
+
+    # Actions not using any target
+    if args.action == "makeuf2":
+        return _action_makeuf2(args)
 
     backend = Backend()
 
@@ -595,3 +601,24 @@ def _start_session(backend, device, args):
         status = STATUS_FAILURE
 
     return status
+
+def _action_makeuf2(args):
+    if args.filename is None:
+        print("Missing -f/--filename argument specifying hex file to convert to UF2")
+        print("Example:")
+        print("    pymcuprog makeuf2 -f myfile.hex")
+        return STATUS_FAILURE
+
+    hexfile = args.filename
+
+    if args.uf2file is None:
+        uf2file = hexfile.removesuffix('.hex')
+        uf2file = uf2file + '.uf2'
+    else:
+        uf2file = args.uf2file
+
+    hex_to_uf2(hexfile, uf2file)
+
+    print("Converted {} to {}".format(hexfile, uf2file))
+
+    return STATUS_SUCCESS

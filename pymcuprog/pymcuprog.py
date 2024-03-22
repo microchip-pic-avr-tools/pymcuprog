@@ -149,6 +149,9 @@ def main():
         Set target supply voltage on a kit (voltage provided by -l literal argument):
         - pymcuprog setsupplyvoltage -l 3.3
 
+        Convert Intel(R) hex file to UF2 file (--uf2file argument is optional)
+        - pymcuprog makeuf2 -f myfile.hex --uf2file newfile.uf2
+
     SerialUPDI usage:
 
         Serial UPDI (also known as 'pyupdi') is implemented as a tool in pymcuprog.
@@ -181,7 +184,7 @@ def main():
                         default="ping",
                         # nargs='?', # this makes ping the default, and -h the only way to get usage()
                         choices=['ping', 'erase', 'read', 'write', 'verify', 'getvoltage', 'getsupplyvoltage',
-                                 'reboot-debugger', 'setsupplyvoltage', 'getusbvoltage', 'reset'])
+                                 'reboot-debugger', 'setsupplyvoltage', 'getusbvoltage', 'reset', 'makeuf2'])
 
     # Device to program
     parser.add_argument("-d", "--device",
@@ -265,7 +268,7 @@ def main():
                         help="Print pymcuprog release details and exit")
 
     parser.add_argument("--erase",
-                        help="erase memory section before writing (from an Intel hex file only)",
+                        help="erase memory section before writing (from an Intel(R) hex file only)",
                         action="store_true")
 
     parser.add_argument("--verify",
@@ -275,6 +278,10 @@ def main():
     parser.add_argument("-x", "--timing",
                         help="add timing output",
                         action="store_true")
+
+    parser.add_argument("--uf2file",
+                        type=str,
+                        help="name of UF2 file to generate")
 
     # Ex-options
     parser.add_argument("-H", "--high-voltage",

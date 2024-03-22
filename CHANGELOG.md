@@ -1,5 +1,20 @@
 # Changelog
 
+
+## [3.17] - March 2024
+
+### Added
+- DSG-7091 Add CLI command to convert hex file to UF2
+
+### Changed
+- DSG-6630 Improve presentation of memory data on console
+
+### Fixed
+- DSG-6636 UPDI devices tinyAVR(R)/megaAVR(R) overwrites preceding bytes when writing single values to user row
+- DSG-7110 Programming failure of AVR64DU32 target with pymcuprog
+- DSG-7223 Serial UPDI uses Flash page buffer erase for EEPROM on AVR EA and EB
+- DSG-7224 Serial UPDI does not support writing complete user row in one operation for AVR DU
+
 ## [3.16] - November 2023
 
 ### Added

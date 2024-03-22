@@ -68,7 +68,7 @@ DEVICE_INFO = {
     # user_row
     'user_row_address_byte': 0x1300,
     'user_row_size_bytes': 0x20,
-    'user_row_page_size_bytes': 0x20,
+    'user_row_page_size_bytes': 0x01,
     'user_row_read_size_bytes': 0x01,
     'user_row_write_size_bytes': 0x01,
     'user_row_chiperase_effect': ChiperaseEffect.NOT_ERASED,

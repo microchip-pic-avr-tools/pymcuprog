@@ -31,7 +31,7 @@ DEVICE_INFO = {
 
     # fuses
     'fuses_address_byte': 0x1050,
-    'fuses_size_bytes': 0x09,
+    'fuses_size_bytes': 0x0C,
     'fuses_page_size_bytes': 0x01,
     'fuses_read_size_bytes': 0x01,
     'fuses_write_size_bytes': 0x01,
