@@ -2,6 +2,7 @@
 SPI NVM implementation
 NB: This is a stub - not all features are implemented.
 """
+import time
 from pyedbglib.protocols.avrispprotocol import AvrIspProtocol
 
 from . import utils
@@ -63,6 +64,7 @@ class NvmAccessProviderCmsisDapSpi(NvmAccessProviderCmsisDapAvr):
                                                        memory_info[DeviceMemoryInfoKeys.WRITE_SIZE])
         if memory_info[DeviceMemoryInfoKeys.NAME] == MemoryNames.FLASH:
             write_chunk_size = memory_info[DeviceMemoryInfoKeys.PAGE_SIZE]
+            write_page_delay_ms = self.device_info.get('flash_page_write_max_time_out_ms', 0)
             while data_aligned:
                 if len(data_aligned) < write_chunk_size:
                     write_chunk_size = len(data_aligned)
@@ -71,6 +73,8 @@ class NvmAccessProviderCmsisDapSpi(NvmAccessProviderCmsisDapAvr):
                 self.isp.write_flash_page(offset_aligned, chunk)
                 offset_aligned += write_chunk_size
                 data_aligned = data_aligned[write_chunk_size:]
+                # Give flash page write operation time to be accomplished by the device
+                time.sleep(write_page_delay_ms/1000.0)
         elif memory_info[DeviceMemoryInfoKeys.NAME] == MemoryNames.EEPROM:
             write_chunk_size = memory_info[DeviceMemoryInfoKeys.PAGE_SIZE]
             while data_aligned:
