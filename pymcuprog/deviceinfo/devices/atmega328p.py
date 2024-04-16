@@ -16,6 +16,7 @@ DEVICE_INFO = {
     'flash_read_size_bytes': 0x80,
     'flash_chiperase_effect': ChiperaseEffect.ALWAYS_ERASED,
     'flash_isolated_erase': False,
+    'flash_page_write_max_time_out_ms': 4.7,
 
     # signatures
     'signatures_address_byte': 0,
