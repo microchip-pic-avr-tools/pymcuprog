@@ -505,7 +505,7 @@ def _setup_tool_connection(args):
     if args.tool == "uart":
         baudrate = _clk_as_int(args)
         # Embedded GPIO/UART tool (eg: raspberry pi) => no USB connection
-        toolconnection = ToolSerialConnection(serialport=args.uart, baudrate=baudrate, timeout=args.uart_timeout)
+        toolconnection = ToolSerialConnection(serialport=args.uart, baudrate=baudrate, timeout=args.uart_timeout, dtr=args.uart_dtr)
     else:
         usb_serial = args.serialnumber
         product = args.tool
