@@ -15,7 +15,7 @@ class UpdiPhysical:
     PDI physical driver using a given serial port at a given baud
     """
 
-    def __init__(self, port, baud=DEFAULT_SERIALUPDI_BAUD, timeout=None):
+    def __init__(self, port, baud=DEFAULT_SERIALUPDI_BAUD, timeout=None, dtr=-1):
         """
         Serial port physical interface for UPDI
 
@@ -42,13 +42,14 @@ class UpdiPhysical:
             self.timeout = timeout
         else:
             self.timeout = 1.0
+        self.dtr = dtr
         self.ser = None
 
-        self.initialise_serial(self.port, self.baud, self.timeout)
+        self.initialise_serial(self.port, self.baud, self.timeout, self.dtr)
         # send an initial break as handshake
         self.send([constants.UPDI_BREAK])
 
-    def initialise_serial(self, port, baud, timeout):
+    def initialise_serial(self, port, baud, timeout, dtr):
         """
         Standard serial port initialisation
 
@@ -66,6 +67,9 @@ class UpdiPhysical:
         except SerialException:
             self.logger.error("Unable to open serial port '%s'", port)
             raise
+
+        if dtr != -1:
+            self.ser.dtr = (dtr != 0)
 
     def _loginfo(self, msg, data):
         if data and isinstance(data[0], str):
@@ -109,7 +113,7 @@ class UpdiPhysical:
 
         # Re-init at the real baud
         temporary_serial.close()
-        self.initialise_serial(self.port, self.baud, self.timeout)
+        self.initialise_serial(self.port, self.baud, self.timeout, self.dtr)
 
     def send(self, command):
         """
