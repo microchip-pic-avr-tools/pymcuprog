@@ -34,7 +34,7 @@ class ToolSerialConnection(ToolConnection):
     """
     serialport = None
 
-    def __init__(self, serialport="COM1", baudrate=DEFAULT_SERIALUPDI_BAUD, timeout=None):
+    def __init__(self, serialport="COM1", baudrate=DEFAULT_SERIALUPDI_BAUD, timeout=None, dtr=-1):
         """
         :param serialport: Serial port name to connect to.
         :type serialport: str
@@ -43,7 +43,9 @@ class ToolSerialConnection(ToolConnection):
         :param timeout: timeout value for serial reading.
             When UPDI is not enabled, attempting to read will return after this timeout period.
         :type timeout: float
+        :type timeout: int
         """
         self.serialport = serialport
         self.baudrate = baudrate
         self.timeout = timeout
+        self.dtr = dtr

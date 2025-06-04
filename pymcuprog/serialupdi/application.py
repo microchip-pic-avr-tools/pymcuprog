@@ -79,12 +79,12 @@ class UpdiApplication:
     :type timeout: int
     """
 
-    def __init__(self, serialport, baud, device=None, timeout=None):
+    def __init__(self, serialport, baud, device=None, timeout=None, dtr=-1):
         self.logger = getLogger(__name__)
         self.device = device
         # Build the UPDI stack:
         # Create a physical
-        self.phy = UpdiPhysical(serialport, baud, timeout)
+        self.phy = UpdiPhysical(serialport, baud, timeout, dtr)
 
         # Create a DL - use 24-bit until otherwise known
         datalink = UpdiDatalink24bit()

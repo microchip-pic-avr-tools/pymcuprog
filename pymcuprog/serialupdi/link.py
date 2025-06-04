@@ -57,12 +57,19 @@ class UpdiDatalink:
         """
         self._init_session_parameters()
         # Check
-        if not self._check_datalink():
-            # Send double break if all is not well, and re-check
-            self.updi_phy.send_double_break()
-            self._init_session_parameters()
-            if not self._check_datalink():
-                raise PymcuprogSerialUpdiError("UPDI initialisation failed")
+        retries = 0
+        try:
+            while not self._check_datalink():
+                # Send double break if all is not well, and re-check
+                self.updi_phy.send_double_break()
+                if retries == 0:
+                    print("Waiting for device...")
+                retries += 1
+                if retries > 100:
+                    raise PymcuprogSerialUpdiError("UPDI initialisation failed")
+                self._init_session_parameters()
+        except KeyboardInterrupt:
+            raise PymcuprogSerialUpdiError("UPDI initialisation failed")
 
     def _check_datalink(self):
         """

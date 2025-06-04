@@ -54,12 +54,13 @@ class NvmAccessProviderSerial(NvmAccessProvider):
         """
         port = transport.serialport
         timeout = transport.timeout
+        dtr = transport.dtr
         baudrate = transport.baudrate
         self.avr = None
         self.options = options
         NvmAccessProvider.__init__(self, device_info)
         self.dut = Dut(device_info)
-        self.avr = UpdiApplication(port, baudrate, self.dut, timeout=timeout)
+        self.avr = UpdiApplication(port, baudrate, self.dut, timeout=timeout, dtr=dtr)
         # Read the device info to set up the UPDI stack variant
         self.avr.read_device_info()
 

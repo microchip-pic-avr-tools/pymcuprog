@@ -1,0 +1,5 @@
+pyserial
+IntelHex
+PyYAML
+appdirs
+pyedbglib>=2.24

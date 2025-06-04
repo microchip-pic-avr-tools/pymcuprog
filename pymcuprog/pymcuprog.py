@@ -252,6 +252,11 @@ def main():
                         default="1.0",
                         help="Timeout for read operations to complete (when using -t uart).  Defaults to 1.0s")
 
+    parser.add_argument("--uart-dtr",
+                        type=int,
+                        default=-1,
+                        help="Set serial port DTR line high (0) or low (1). Default for all connections is low.")
+
     parser.add_argument("-i", "--interface",
                         type=str,
                         help="Programming interface to use")
